@@ -1,0 +1,126 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+    <!-- Page container -->
+    <div class="container">
+        <div class="navdis">
+            <div class="comp-name">
+                <p>REVERSED</p>
+            </div>
+            <div class="navlinks">
+                <li><a>HOME</a></li>
+                <li><a>ABOUT</a></li>
+                <li><a>BOX</a></li>
+            </div>
+            <div class="nav-icon">
+                <div class="navpic"></div>
+                <!-- <div class="navname">
+                    <p>User</p>
+                </div> -->
+            </div>
+        </div>
+        <div class="content">
+            <div class="the-divs">
+                <div class="leftdiv">
+                    <div class="leftheader">
+                        <p>Welcome To Game Box</p>
+                    </div>
+                    <div class="leftdesc">
+                        <p>
+                            Your one stop gaming site where you
+                            can get all the games specially tailored
+                            for you.
+                            <br />
+                            <br />
+                            These are Games by Gamers for Gamers.
+
+                            <br>
+                            <br>
+                            <b>DIG IN!!!</b>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="rightdiv">
+                    <div class="leftheader">
+                        <p>TO GET STARTED!</p>
+                    </div>
+                    <div class="leftdesc">
+                        <p>
+                            New Here?No Biggie
+                            <br />
+                            <br />
+                        <p>
+                            Click on the Sign Up button to get started.
+                        </p>
+                        <br>
+                        <br>
+                        Have An Account? Even Better!<br>
+                        Click on The Sign in button and get it ON!!
+                        <br>
+                        <br>
+                        <b>DIG IN!!!</b>
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="login-sign">
+                <div class="login-b">
+                    <button id="login-form-b">SIGN IN</button>
+                </div>
+                <div class="sign-b">
+                    <button id="signup-form-b">SIGN UP</button>
+                </div>
+            </div>
+            <div class="signup-form" id="signup-form">
+                <div class="signup-head">
+                    <h1>SIGN UP</h1>
+                </div>
+
+                <form action="./auth.php" method="POST" id="registerForm">
+                    <input required type="text" name="s-username" id="s-username" placeholder="Username">
+                    <p id="s-uname-alert" class="s-uname-alert"></p>
+                    <input required type="email" name="s-email" id="email" placeholder="Email">
+                    <p id="s-email-alert" class="s-uname-alert"></p>
+                    <input required type="password" name="s-password" id="s-password" placeholder="New Password">
+                    <p id="s-pass-alert" class="s-uname-alert"></p>
+                    <input required type="password" name="sc-password" id="sc-password" autocomplete="false"
+                        placeholder="Confirm Password">
+                    <p id="s-password-alert" class="s-uname-alert"></p>
+                    <button type="submit" value="submit" id="register">REGISTER</button>
+                </form>
+            </div>
+
+            <div class="login-form" id="login-form">
+                <div class="login-head">
+                    <h1>SIGN IN</h1>
+                </div>
+
+                <form action="./auth.php" method="POST" id="loginForm">
+                    <input type="text" name="username" id="username" placeholder="Username">
+                    <p id="username-alert" class="s-uname-alert"></p>
+
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <p id="password-alert" class="s-uname-alert"></p>
+                    <p class="forgot-pass"><a href="./static/php/forgotpassword.php">Forgot Password?</a></p>
+                    <button type="submit" value="submit" id="signin">SIGN IN</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <script src="./static/js/index.js" type="module"></script>
+    <script src="./static/js/jquery-3.6.3.js"></script>
+</body>
+
+</html>

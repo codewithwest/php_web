@@ -1,0 +1,16 @@
+body, html {
+  margin: 0;
+}
+
+.container {
+  min-height: 1080px;
+  background: rgb(56, 56, 232);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .navbar {
+  display: flex;
+  background: linear-gradient(0deg, transparent, transparent, rgba(222, 44, 55, 0.5));
+}/*# sourceMappingURL=structure.css.map */

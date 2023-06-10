@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="static/css/structure.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="compName">
+                <h1>REDDINGTON</h1>
+            </div>
+            <ul>
+                <a href="/">
+                    <p>HOME</p>
+                </a>
+                <a href="/about">
+                    <p>ABOUT</p>
+                </a>
+                <a href="/new">
+                    <p>NEW</p>
+                </a>
+                <!-- <a href="http://"></a> -->
+            </ul>
+        </div>
+        <div class="content">
+            <!-- start of forms -->
+            <div class="login-register">
+                <div class="input-headers">
+                    <button class="login-login">
+                        <p>SIGN IN</p>
+                    </button>
+                    <button class="register-register">
+                        <p>SIGN UP</p>
+                    </button>
+                </div>
+                <div class="login-form" id="login-form">
+                    <form action="./auth.php" method="POST" id="loginForm">
+                        <input type="text" name="username" id="username" placeholder="Username" required>
+                        <p id="username-alert" class="s-uname-alert"></p>
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                        <p id="password-alert" class="s-uname-alert"></p>
+                        <button type="submit" value="submit" id="signin">SIGN IN</button>
+                    </form>
+                </div>
+
+
+                <div class="register-form">
+                    <form action="./auth.php" method="POST" id="registerForm">
+                        <input type="email" name="s-email" id="email" placeholder="Email" required>
+                        <p id="s-email-alert" class="s-uname-alert"></p>
+                        <input type="text" name="s-username" id="s-username" placeholder="Username" required>
+                        <p id="s-uname-alert" class="s-uname-alert"></p>
+                        <input type="password" name="s-password" id="s-password" placeholder="Password" required>
+                        <p id="s-pass-alert" class="s-uname-alert"></p>
+                        <input type="password" name="sc-password" id="sc-password" placeholder="Confirm Password"
+                            required>
+                        <p id="s-password-alert" class="s-uname-alert"></p>
+                        <button type="submit" value="submit" id="register">SIGN UP</button>
+                    </form>
+                </div>
+                <div class="close-auth-div">
+                    <button type="submit" class="close-auth">X</button>
+                </div>
+
+            </div>
+            <!-- end of forms -->
+        </div>
+        <!-- start of footer -->
+        <div class="footer">
+            <div class="newsletter">
+                <div class="letter-text">
+                    <p>Get our latest news letter on demand</p>
+                </div>
+                <div class="letertext-area">
+                    <input type="text" class="subscribe-text">
+                </div>
+                <div class="submit-news">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+            <div class="three-footer">
+                <div class="three-one">
+                    <div class="three-one-header">
+                        <h2>VortexHelix</h2>
+                    </div>
+                    <div class="three-one-links">
+                        <a href="">)ne</a>
+                        <a href="">Two</a>
+                        <a href="">Three</a>
+                        <a href="">$</a>
+                        <a href="">5</a>
+                    </div>
+
+                </div>
+                <div class="three-two">
+                    <div class="three-one-header">
+                        <h2>VortexHelix</h2>
+                    </div>
+                    <div class="three-one-links">
+                        <a href="">)ne</a>
+                        <a href="">Two</a>
+                        <a href="">Three</a>
+                        <a href="">$</a>
+                        <a href="">5</a>
+                    </div>
+                </div>
+                <div class="three-three">
+                    <div class="three-one-header">
+                        <h2>VortexHelix</h2>
+                    </div>
+                    <div class="three-one-links">
+                        <a href="">)ne</a>
+                        <a href="">Two</a>
+                        <a href="">Three</a>
+                        <a href="">$</a>
+                        <a href="">5</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="social">
+                <div class="followus">
+                    <p>Follow Us</p>
+                </div>
+                <div class="follow-icons">
+                    <a href=""><img src="./static/assets/index/footer0.jpg" alt=""></a>
+                    <a href=""><img src="./static/assets/index/footer1.jpg" alt=""></a>
+                    <a href=""><img src="./static/assets/index/footer2.jpg" alt=""></a>
+                    <a href=""><img src="./static/assets/index/footer3.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="company">
+                <p>VortexHelix & Since 2022</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./static/js/index.js" type="module"></script>
+<script src="./static/js/jquery-3.6.3.js"></script>
+
+</html>

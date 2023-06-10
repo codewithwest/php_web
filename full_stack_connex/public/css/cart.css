@@ -1,0 +1,319 @@
+.cart-btn-cont {
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    border-radius: 100px;
+    display: none;
+    justify-self: flex-end;
+    top: 0;
+    background: rgba(4, 162, 247, 0.8);
+    z-index: 52;
+}
+
+.cart-btn {
+    width: 90%;
+    height: 90%;
+    border: 1px solid;
+    border-radius: 100px;
+    background: rgba(250, 250, 250, .95);
+}
+
+.cart-btn:hover {
+    background: rgba(1, 211, 141, 0.95);
+    color: #fff;
+    transition: all 2s;
+}
+
+.cart-man-cont {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(-15deg,
+            rgba(17, 17, 17, 0.8),
+            transparent,
+            rgba(245, 245, 245, .8),
+            rgba(17, 17, 17, 0.8),
+            transparent,
+            rgba(245, 245, 245, .8),
+            rgba(17, 17, 17, 0.8),
+            transparent, rgba(245, 245, 245, .8)),
+        rgba(204, 244, 234, 0.5);
+    z-index: 51;
+}
+
+.cart-man {
+    position: relative;
+    width: 90%;
+    height: 95%;
+    background: rgba(8, 184, 238, 0.7);
+    display: grid;
+    grid-template-columns: 90%;
+    grid-template-rows: 10% 40% 50%;
+    box-shadow:
+        1px 1px rgba(7, 174, 229, 0.84),
+        -1px -1px rgba(7, 174, 229, 0.84);
+}
+
+.collapse-cart {
+    position: absolute;
+    justify-self: flex-end;
+    align-self: flex-start;
+    height: 5%;
+    width: 5%;
+    box-shadow: 0px 1px rgba(1, 211, 141, 0.95),
+        -1px 0px rgba(1, 211, 141, 0.95);
+}
+
+.collapse-cart:hover {
+    background: rgba(78, 191, 243, 0.6);
+    transition: all 2s;
+}
+
+.checkout-form {
+    width: 80%;
+    height: 90%;
+    box-shadow: 1px 1px rgba(1, 46, 61, 0.84);
+    border-bottom-right-radius: 10px;
+}
+
+.checkout-form div {
+    width: 80%;
+    height: 15%;
+}
+
+.checkout-form label {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    width: 20%;
+}
+
+.checkout-form input {
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    height: 70%;
+    box-shadow: 1px 1px rgba(5, 163, 226, 0.95),
+        -1px -1px rgba(41, 43, 42, 0.45);
+
+}
+
+.checkout-form button {
+    border: none;
+    border-radius: 5px;
+    width: 20%;
+    height: 12%;
+    box-shadow: 1px 1px rgba(18, 18, 18, 0.95);
+    transition: all 2s;
+
+}
+
+.checkout-form button:hover {
+    width: 18%;
+    transition: all 2s;
+    box-shadow: -1px -1px rgba(14, 15, 14, 0.95);
+    background: rgba(1, 211, 141, 0.125);
+}
+
+.cart-items-cont {
+    width: 80%;
+    box-shadow: -.5px -.5px rgba(1, 46, 61, 0.84);
+    border-top-left-radius: 10px;
+    display: grid;
+    grid-template-rows: 80% 20%;
+    grid-template-columns: 100%;
+    justify-self: center;
+    gap: 8px;
+    padding-bottom: 5px;
+}
+
+.cart-items {
+    border-radius: 10px;
+}
+
+.cart-items-inner {
+
+    width: 90%;
+    height: 99%;
+    box-shadow:
+        .1px .1px rgba(1, 46, 61, 0.84),
+        -.1px -.1px rgba(1, 46, 61, 0.84);
+    border-radius: 10px;
+    padding: 5px 0;
+    display: grid;
+    gap: 5px;
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
+    overflow-y: auto;
+}
+
+.cart-items-tot {
+    align-self: center;
+    justify-self: flex-end;
+    margin-bottom: 10px;
+    margin-right: 10%;
+    height: 90%;
+    width: 30%;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow:
+        1px 1px rgba(1, 46, 61, 0.84),
+        -1px -1px rgba(1, 46, 61, 0.84);
+}
+
+.cart-item {
+    border-radius: 10px;
+    height: 120px;
+    display: flex;
+    width: 97%;
+    margin: 0 auto;
+    box-shadow:
+        1px 1px rgba(1, 46, 61, 0.84),
+        -1px -1px rgba(1, 46, 61, 0.84);
+    display: grid;
+    grid-template-columns: 75% 23%;
+    grid-template-rows: 98%;
+}
+
+.cart-item-details {
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+}
+
+.cart-item-title {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-indent: 10%;
+    padding: auto 0;
+}
+
+.cart-img-cont {
+    margin-right: 5px;
+    height: 100%;
+    width: 25%;
+    box-shadow: 1px 1px rgba(14, 15, 14, 0.95),
+        -1px -1px rgba(14, 15, 14, 0.95);
+    border-radius: 100px;
+}
+
+.cart-img-cont img {
+    border-radius: 100px;
+}
+
+.cart-item-des {
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 5px;
+    overflow-y: none;
+    text-transform: capitalize;
+    font-size: .9rem;
+}
+
+.cart-item-des p {
+    width: 75%;
+}
+
+.cart-item-price {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+
+.cart-item-control {
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    grid-template-rows: 25% 10% 30% 15%;
+    font-size: 1rem;
+}
+
+.cart-item-del {
+    justify-content: flex-end;
+}
+
+.cart-item-del button {
+    border-top-right-radius: 15px;
+    width: 30%;
+    height: 80%;
+    border-radius: 2px;
+}
+
+.cart-item-inc button,
+.cart-item-dec button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 30%;
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+}
+
+.cart-item-del button:hover,
+.cart-item-inc button:hover,
+.cart-item-dec button:hover {
+    background: rgba(4, 162, 247, 0.8);
+    transition: all 1.5s;
+}
+
+.cart-count {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    border: 2px solid rgb(8, 131, 225);
+    background: rgba(1, 211, 141, 0.95);
+    top: 0;
+    left: 0;
+    border-radius: 100px;
+}
+
+.cart-success {
+    height: 40%;
+}
+
+.cart-success-cont {
+    display: none;
+}
+
+.admin-link {
+    display: none;
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+    border: 1px solid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background: rgb(6, 162, 205);
+}
+
+.admin-link a {
+    display: flex;
+    width: 99%;
+    height: 99%;
+    border: 2px solid red;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+}
+
+@media only screen and (min-width: 800px) {
+    .cart-btn-cont {
+        width: 5%;
+    }
+
+    .cart-man {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .cart-btn-cont {
+        height: 8%;
+    }
+}
