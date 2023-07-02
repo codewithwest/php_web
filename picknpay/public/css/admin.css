@@ -1,0 +1,122 @@
+
+
+:root {
+    --product-items-auto-height: 150px;
+    --product-items-min-height: 100px;
+}
+
+.admin-nav  a {
+    height: 90px;
+}
+ .admin-nav {
+    display: none;
+    flex:1 0 200px;
+    background: #c7c8c9;
+ }
+
+
+.collapse-admin-nav {
+    position: absolute;
+    background: #003359;
+    height: min-content;
+    width:min-content;
+    border-radius: 5px;
+    border: 1px solid rgba(22, 22, 22, .7);
+}
+.collapse-admin-nav svg{
+    height: 40px;
+    width: 50px;
+}
+
+/* .collapse-admin-nav:hover{
+    transition: all .7s;
+    background: rgb(207, 208, 207);
+} */
+
+.admin-nav a {
+    box-shadow: 1px 1px rgba(22, 22, 22, .7);
+}
+
+.admin-nav a:hover {
+    color: #fff;
+    transition: all .5s;
+    background: #003359;
+    box-shadow: 2px 2px 2px rgba(191, 194, 193, 0.7);
+}
+
+.admin-nav a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin-content {
+    background: gainsboro;
+    flex: 1 0 380px;
+    gap: 10px;
+    padding: 10px;
+}
+
+.collapse-admin-nav:hover .admin-nav {
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    .collapse-admin-nav svg {
+            height: 30px;
+            width: 30px;
+        }
+    .admin-nav{
+        flex: 1 0 250px;
+    }
+    .admin-content {
+        flex: 1 0 20px;
+        padding: 2px;
+    }
+
+    .product-cont {
+        align-items: center;
+        justify-content: center;
+        font-size: smaller;
+        width: 95%;
+    }
+
+    .product-img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .product-desc h2,
+    .product-avail h2,
+    .product-price h2,
+    .product-functions-cont h2 {
+        height: 30%;
+        font-size: small;
+    }
+
+    /* .product-img, */
+    .product-desc {
+        flex: 1 0 200px;
+    }
+
+    .product-functions button {
+        height: 50px;
+    }
+
+    .product-functions-cont {
+        height: var(--product-items-auto-height);
+    }
+
+    .product-price,
+    .product-avail {
+        flex: 1 0 100px;
+        height: var(--product-items-auto-height);
+    }
+
+}
+
+@media only screen and (min-width: 800px) {
+.admin-nav {min-height: 86.5vh;}
+/* .admin-content{
+    flex:1 0 650px;
+} */
+}
