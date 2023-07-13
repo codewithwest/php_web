@@ -19,6 +19,15 @@ use App\Http\Controllers\AdminAuth;
 Route::get('/', function () {
     return view('index');
 });
+ 
+Route::get('/products/product/', function () {
+    // ...
+    // $prod = DB::table('products')->where('id',$prodId)->get();
+    // return view('product_view',['prodById' => $prod]);
+    return view('product_preview' );
+
+
+});
 
 Route::get('/auth', function () {
     return redirect('auth/login');
