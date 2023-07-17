@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <form action="/store/admin/dashboard/admins/addadmin/signin" class="login-form flex-col j-sa m-auto" method="post">
+    <form action="/store/admin/dashboard/admins/admin/signin" class="login-form flex-col j-sa m-auto" method="post">
         <h3> LOG IN</h3>
         @csrf
         <p style="color:red">

@@ -19,34 +19,49 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Image</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Phone</th>
+                    <th>Price</th>
+                    <th>Desc</th>
+                    <th>Category</th>
+                    <th>Usage</th>
+                    <th>Warnings</th>
+                    <th>Stock</th>
+                    <th>Rating</th>
+                    <th>Reviews</th>
                     <th>Functions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($admins as $key => $data)
+                @foreach ($products as $key => $data)
                     <tr class="text-center">
                         <td class="brand m-auto">{{ $data->id }}</td>
+
+                        <td class="brand m-auto d-flex center-content">
+
+                        <img src="/images/products/{{ $data->image}}" class="fill m-auto" alt="">
+                        </td>
                         <td class="brand m-auto">{{ $data->name }}</td>
-                        <td class="brand m-auto">{{ $data->email }}</td>
-                        <td class="brand m-auto">{{ $data->address }}</td>
-                        <td class="brand m-auto">{{ $data->phone }}</td>
-                        <!-- <td class="t-pass brand m-auto">{{ $data->password }}</td> -->
-                        <td class="center-content h-100">
-                            <a class="del-user center-content">
+                        <td class="brand m-auto">{{ $data->price }}</td>
+                        <td class="brand m-auto">{{ $data->desc }}</td>
+                        <td class="brand m-auto">{{ $data->category }}</td>
+                        <td class="brand m-auto">{{ $data->usage }}</td>
+                        <td class="brand m-auto">{{ $data->warnings }}</td>
+                        <td class="brand m-auto">{{ $data->stock }}</td>
+                        <td class="brand m-auto">{{ $data->rating }}</td>
+                        <td class="brand m-auto">{{ $data->reviews }}</td>
+                        <td class="h-100 d-flex">
+                            <a class="del-user h-100   m-auto" href="/store/admin/products/delete/{{$data->barcode}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    class="bi bi-trash m-auto-vert" viewBox="0 0 16 16">
                                     <path
                                         d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
                                     <path
                                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                 </svg>
-                                <p class="d-none">{{ $data->email }}</p>
+                                {{-- <p class="d-none">{{ $data->barcode }}</p> --}}
                             </a>
-                            <a class="edit-user center-content">
+                            <a href="products/{{ $data->barcode }}" class="edit-user center-content h-100">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                                     class="bi bi-pen" viewBox="0 0 16 16">

@@ -12,7 +12,7 @@
     <div class="admins-cont flex-col w-100">
         <div class="d-flex j-sa">
             <h1 class="text-center">Admins </h1>
-            <a href='/store/admin/dashboard/admins/addadmin'>Add New Admin</a>
+            {{-- <a href='/store/admin/dashboard/admins/addadmin'>Add New Admin</a> --}}
 
         </div>
 
@@ -37,7 +37,7 @@
                         <td class="brand m-auto">{{ $data->phone }}</td>
                         <!-- <td class="t-pass brand m-auto">{{ $data->password }}</td> -->
                         <td class="center-content h-100">
-                            <a class="del-user center-content">
+                            <a class="del-user center-content" href="/store/admin/admins/delete/{{$data->id}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                                     class="bi bi-trash" viewBox="0 0 16 16">
                                     <path

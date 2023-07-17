@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
 return new class extends Migration
 {
     /**
@@ -24,7 +23,8 @@ return new class extends Migration
             $table->string('usage')->nullable();
             $table->string('warnings')->nullable();
             $table->char('stock');
-            $table->char('reviews');
+            $table->char('rating');
+            $table->char('reviews')->nullable();
             $table->char('image');
         });
     }

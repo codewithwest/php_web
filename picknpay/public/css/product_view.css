@@ -1,7 +1,6 @@
 .product-info{
     width: 80%;
     margin: 0 auto;
-
 }
 
 .prod-cont .image-cont,
@@ -72,6 +71,5 @@
     .product-info{
         width: 60%;
         margin: 0 auto;
-    
     }
 }

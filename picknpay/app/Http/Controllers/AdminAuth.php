@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 
 use Illuminate\Http\Request;
 
@@ -95,7 +97,7 @@ class AdminAuth extends Controller
             session(['email' => $request->input('email')]);
             session(['occupation' => $request->input('occupation')]);
             session(['phone' => $request->input('phone')]);
-            return redirect()->back()->with('success', 'Admin details Updated Successfully');
+            return redirect('/store/admin/dashboard/admins')->with('success', 'Admin details Updated Successfully');
 
         } else {
             return redirect()->back()->with('failure', 'Admin details Update Failure');
@@ -103,78 +105,111 @@ class AdminAuth extends Controller
         }
      }
 
-    function addproduct(Request $request){
-       $request->validate([
-        'name'=>'required',
-        'desc'=>'required|',
-        'price'=>'required',
-        'rating'=>'required',
-        'availability'=>'required',
-        'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-       ]);
-       $input = $request->all();
-       $input['image'] = time().'.'.$request->image->extension();
-       $request->image->move(public_path('images/featured'), $input['image']);
+    function addProduct(Request $request){
+        $uniqid = Str::random(9);
+        $request->validate([
+            'name'=>'required',
+            'price'=>'required',
+            'desc'=>'required',
+            'discount'=>'required',
+            'features'=>'required',
+            'category'=>'required',
+            'rating'=>'required',
+            'stock'=>'required',
+            'image'=>'required|image|mimes:jpeg,jpg,png,jpg,gif,svg|max:10048',
+        ]);
+        $input = $request->all();
+        $input['image'] = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images/products'), $input['image']);
 
-       $query = DB::table('products')->insert([
-        'name'=>$input['name'],
-        'desc'=>$input['desc'],
-        'price'=>$input['price'],
-        'rating'=>$input['rating'],
-        'availability'=>$input['availability'],
-        'image'=>$input['image'],
-       ]);
+        $query = DB::table('products')->insert([
+            'barcode'=>$uniqid,
+            'name'=>$input['name'],
+            'desc'=>$input['desc'],
+            'price'=>$input['price'],
+            'discount'=>$input['discount'],
+            'features'=>$input['features'],
+            'category'=>$input['category'],
+            'usage'=>$input['usage'],
+            'warnings'=>$input['warnings'],
+            'stock'=>$input['stock'],
+            'rating'=>$input['rating'],
+            'reviews'=>$input['reviews'],
+            'image'=>$input['image'],
+        ]);
 
-        if ($query) {
-            return response()->json(['success'=>'Product Inserted.']);
-        } else {
-            return response()->json(['failure'=>'Product Insertion Failed.']);
+        $validator?true:
+              redirect()->back()->withErrors($validator);
+         return redirect('/store/admin/login')->with('success', 'Product Added Successfully!');
+    }
+
+    function delProduct($barcode){
+        $delete = DB::table('products')
+        ->where('barcode',$barcode)
+        ->delete();
+        return redirect('/store/admin/dashboard/products')->with('success', 'Product Update Successfully!');
+
+
         }
-     }
-
-     function delproduct($id){
-      $delete = DB::table('products')
-      ->where('id',$id)
-      ->delete();
-      return response()->json(['success'=>'Product Deleted.']);
-     }
-     function deluser($email){
-      $delete = DB::table('users')
-      ->where('email',$email)
-      ->delete();
-      return response()->json(['success'=>'Product Deleted.']);
-     }
-
-     function produpdate(Request $request){
-       $request->validate([
-        'id'=>'required',
-        'name'=>'required',
-        'desc'=>'required|',
-        'price'=>'required',
-        'rating'=>'required',
-        'availability'=>'required',
-        'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-
-    ]);
-    $input = $request->all();
-    $input['image'] = time().'.'.$request->image->extension();
-    $request->image->move(public_path('images/featured'), $input['image']);
-
-       $update = DB::table('products')
-       ->where('id',$request->input('id'))
-       ->update([
-        'name'=>$input['name'],
-        'desc'=>$input['desc'],
-        'price'=>$input['price'],
-        'rating'=>$input['rating'],
-        'availability'=>$input['availability'],
-        'image'=>$input['image']
-       ]);
-
-        if ($update) {
-            return response()->json(['success'=>'Product Updated SuccessFully.']);
-        } else {
-            return response()->json(['failure'=>'Product Update Failed.']);
+    function deluser($email){
+        $delete = DB::table('users')
+        ->where('email',$email)
+        ->delete();
+        return redirect()->back()->with('success', 'User Deleted Successfully');
         }
-     }
-}
+
+    function prodUpdate(Request $request){
+        $validator=$request->validate([
+            'name'=>'required',
+            'price'=>'required',
+            'desc'=>'required',
+            'discount'=>'required',
+            'features'=>'required',
+            'category'=>'required',
+            'rating'=>'required',
+            'stock'=>'required',
+        ]);
+        $input = $request->all();
+        $key = in_array('image', $input);
+        if ($key) {
+            $input['image'] = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/products'), $input['image']);
+            $update = DB::table('products')
+        ->where('id',$request->input('id'))
+        ->update([
+                'name'=>$input['name'],
+                'desc'=>$input['desc'],
+                'price'=>$input['price'],
+                'discount'=>$input['discount'],
+                'features'=>$input['features'],
+                'category'=>$input['category'],
+                'usage'=>$input['usage'],
+                'warnings'=>$input['warnings'],
+                'stock'=>$input['stock'],
+                'rating'=>$input['rating'],
+                'reviews'=>$input['reviews'],
+                'image'=>$input['image'],
+
+        ]);
+        }else{
+            $update = DB::table('products')
+            ->where('id',$request->input('id'))
+            ->update([
+                'name'=>$input['name'],
+                'desc'=>$input['desc'],
+                'price'=>$input['price'],
+                'discount'=>$input['discount'],
+                'features'=>$input['features'],
+                'category'=>$input['category'],
+                'usage'=>$input['usage'],
+                'warnings'=>$input['warnings'],
+                'stock'=>$input['stock'],
+                'rating'=>$input['rating'],
+                'reviews'=>$input['reviews'],
+            ]);
+        }
+
+        $validator?true:
+              redirect()->back()->withErrors($validator);
+         return redirect('/store/admin/dashboard/products')->with('success', 'Product Update Successfully!');
+}}

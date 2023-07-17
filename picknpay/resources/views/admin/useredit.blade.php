@@ -8,6 +8,8 @@
             {{ Session::get('success') }}
         </div>
     </div>
+    <script>
+    </script>
 @elseif (Session::has('failure'))
     <div class="alert-success-cont top-0 pos-abs d-flex center-content w-100">
         <div class="alert-success bg-fail m-auto fw-bold ">

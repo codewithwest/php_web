@@ -16,7 +16,7 @@
     @endif
 @endsection
 @section('auth_content')
-    <form action="/store/admin/dashboard/admins/addadmin/signup" class="sign-ind-form d-flex wrap j-sb m-auto"
+    <form action="/store/admin/dashboard/admins/add/new/admin" class="sign-ind-form d-flex wrap j-sb m-auto"
         method="post">
         @csrf
         <h1>REGISTER NEW ADMIN</h1><br>

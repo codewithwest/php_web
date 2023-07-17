@@ -19,7 +19,7 @@ use App\Http\Controllers\AdminAuth;
 Route::get('/', function () {
     return view('index');
 });
- 
+
 Route::get('/products/product/', function () {
     // ...
     // $prod = DB::table('products')->where('id',$prodId)->get();
@@ -62,8 +62,8 @@ Route::get('/store/admin/dashboard/users', function () {
 });
 // Products dash board tab
 Route::get('/store/admin/dashboard/products', function () {
-     $adminslist = DB::table('customers')->get();
-    return view('admin.products',['admins' => $adminslist]);
+     $productslist = DB::table('products')->get();
+    return view('admin.products',['products' => $productslist]);
 });
 
 // Admin Auth
@@ -101,11 +101,11 @@ Route::get('/store/admin/dashboard/admins/{id}', function ($userId) {
 });
 
 // Get Product to edit
-Route::get('/store/admin/dashboard/products/{id}', function ($productId) {
+Route::get('/store/admin/dashboard/products/{barcode}', function ($productBarcode) {
     // ...
-    $product = DB::table('products')->where('id',$productId)->get();
+    $product = DB::table('products')->where('barcode',$productBarcode)->get();
     // echo $user;
-    return view('admin.productedit',['productById' => $product]);
+    return view('admin.productedit',['productByBarcode' => $product]);
 
 });
 // or
@@ -121,12 +121,38 @@ Route::post('customer/signup/individual', [UserAuth::class, 'addCustomer']);
 Route::post('customer/signin/individual', [UserAuth::class, 'loginCustomer']);
 Route::get('customer/logout', [UserAuth::class, 'logoutCustomer']);
 // Admin Auth
-Route::post('/store/admin/dashboard/admins/addadmin/signup', [AdminAuth::class, 'addAdmin']);
-Route::post('/store/admin/dashboard/admins/addadmin/signin', [AdminAuth::class, 'loginAdmin']);
+Route::post('/store/admin/dashboard/admins/add/new/admin', [AdminAuth::class, 'addAdmin']);
+Route::post('/store/admin/dashboard/admins/admin/signin', [AdminAuth::class, 'loginAdmin']);
 Route::get('store/admin/logout', [AdminAuth::class, 'logoutAdmin']);
 
 
 // Customer Admin Update
 Route::post('/store/admin/users/update', [UserAuth::class, 'customerUpdate']);
 Route::post('/store/admin/admins/update', [AdminAuth::class, 'adminUpdate']);
+Route::post('/store/admin/products/update', [AdminAuth::class, 'prodUpdate']);
 
+// Customer Admin Delete
+Route::get('/store/admin/products/delete/{barcode}', function ($ProdBarcode) {
+    $delete = DB::table('products')
+    ->where('barcode',$ProdBarcode)
+    ->delete();
+    return redirect('/store/admin/dashboard/products')->with('success', 'Product Deleted Successfully!');
+});
+
+Route::get('/store/admin/admins/delete/{id}', function ($id) {
+    $delete = DB::table('admins')
+    ->where('id',$id)
+    ->delete();
+    return redirect('/store/admin/dashboard/admins')->with('success', 'Admin Deleted Successfully!');
+});
+
+Route::get('/store/admin/products/user/{id}', function ($id) {
+    $delete = DB::table('customers')
+    ->where('id',$id)
+    ->delete();
+    return redirect('/store/admin/dashboard/users')->with('success', 'User Deleted Successfully!');
+});
+
+
+// Admin Products Add and Update
+Route::post('/store/admin/dashboard/products/add/new/product', [AdminAuth::class, 'addProduct']);
