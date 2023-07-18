@@ -9,7 +9,7 @@
         </svg>
         <p>Help</p>
     </div>
-    @endsection
+
         @if (Session::has('success'))
             <div class="alert-success-cont top-0 pos-abs d-flex center-content w-100">
                 <div class="alert-success m-auto fw-bold ">
@@ -81,7 +81,7 @@
         <div class="flex-col wrap">
             <label for="warnings">Warnings</label>
             <input type="text" name="warnings" value="{{ old('warnings') }}">
- 
+
         </div>
         <div class="flex-col wrap">
             <label for="stock">Stock</label>
@@ -108,7 +108,7 @@
               </svg>
             New Product
         </button>
-        
+
     </form>
 
     <style>
@@ -130,8 +130,8 @@
   outline: none;
   transition: all .5s;
 
-   
-   
+
+
 }
 .custom-file-input:hover::before {
     transition: all .8s;

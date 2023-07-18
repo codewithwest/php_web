@@ -30,11 +30,11 @@ setInterval(() => {
 }, 5000);
 
 
-let _html = document.querySelector('.products-carousel').innerHTML
-for (let pd = 0; pd < 4; pd++) {
+// let _html = document.querySelector('.products-carousel').innerHTML
+// for (let pd = 0; pd < 4; pd++) {
 
-    document.querySelector('.products-carousel').innerHTML += _html
-}
+//     document.querySelector('.products-carousel').innerHTML += _html
+// }
 // Used Closures to solve late loading of products
 
 (() => {

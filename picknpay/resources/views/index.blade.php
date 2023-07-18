@@ -35,18 +35,23 @@
                 <p>Sellers</p>
             </div>
             <div class="products-carousel d-flex">
-                <a class="flex-col j-sb">
-                    <img src="/images/index/0.jpg" alt="" class="w-100">
-                    <p class="w-100">This is the prodect name</p>
-                    <p class="w-100 fw-bold">R 10 000</p>
-                    <h4 class="fw-bold w-100">Smart Price: R 9002</h4>
+                @foreach ($products as $key => $data)
+                <div class="product-card flex-col j-sb">
+                    <img src="/images/products/{{$data->image}}" alt="" class="w-100">
+                   <a href="products/product/{{$data->barcode}}"> <p class="w-100">{{$data->name}}</p></a>
+                    <p class="w-100 fw-bold">R {{$data->price-0.01}}</p>
+                    @if ($data->discount>0)
+                    <h4 class="fw-bold w-100">Smart Price: R {{$data->price*($data->discount/100)}}</h4>
+                    @else
+                    <h4 class="fw-bold w-100"></h4>
+                    @endif
                     <div class="prod-control w-100 d-flex">
                         <button>-</button>
                         <p class="fw-bold">1</p>
                         <button>+</button>
                     </div>
                     @if (Session::has('email'))
-                        <button class="fw-bold">Add to trolley</button>
+                        <button id="{{$data->barcode}}" class="fw-bold">Add to trolley</button>
                     @else
                         <button onclick="document.querySelector('.login-reg-modal').style.display='flex'"
                             class="getLogin fw-bold">Add to
@@ -56,10 +61,11 @@
                     @endif
 
                     <div class="ratings">
-                        <p hidden class="">2.5</p>
+                        <p hidden class="">{{$data->rating}}</p>
                     </div>
 
-                </a>
+                </div>
+                @endforeach
             </div>
             <div class="shop-now-cont d-flex">
                 <a href="/all/products">Shop Now ></a>

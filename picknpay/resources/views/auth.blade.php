@@ -19,6 +19,7 @@
     <div class="login-form-cont d-flex t">
         @yield('auth_content')
     </div>
+        @yield('checkout_content')
 </body>
 
 </html>

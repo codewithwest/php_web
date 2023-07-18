@@ -17,22 +17,28 @@ use App\Http\Controllers\AdminAuth;
 
 // Users Interface Interaction
 Route::get('/', function () {
-    return view('index');
+    $productsList = DB::table('products')->get();
+    return view('index',['products' => $productsList]);
 });
 
-Route::get('/products/product/', function () {
-    // ...
-    // $prod = DB::table('products')->where('id',$prodId)->get();
-    // return view('product_view',['prodById' => $prod]);
-    return view('product_preview' );
-
-
+Route::get('/products/product/{barcode}', function ($barcode) {
+    $prod = DB::table('products')->where('barcode',$barcode)->get();
+    return view('product_preview',['prodByBarcode' => $prod]);
 });
+
+// Route::get('/products/product/checkout', function () {
+//     // $request()->session()->get('email');
+//     // $prod = DB::table('customers')->where('email',$request)->get();
+//     // return view('indxe',['prodByBarcode' => $prod]);
+// });
+
+
 
 Route::get('/auth', function () {
     return redirect('auth/login');
 });
 Route::get('/auth/login', function () {
+
     return view('auth.login');
 });
 

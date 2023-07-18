@@ -135,7 +135,7 @@ class UserAuth extends Controller
             if($query) return response()->json(['success'=>'Laravel ajax example is being processed.']);
          }
    }
-   function getusercart(Request $request) {
+   function getUserCart(Request $request) {
       $cart = DB::table('carts')->whereEmail($request->input('email'))->first();
        if ($cart) {
        $mainCart = explode(',',$cart->product_ids);
@@ -149,7 +149,6 @@ class UserAuth extends Controller
                      $allUs = array();
                      // while ($row = mysqli_fetch_assoc($resA)) {
                      foreach ($prods as $key => $value) {
-
                         // if more tha one value in list
                         $allP = array($value->id,$value->name,$value->desc,$value->price);
                         array_push($allUs, $allP);
