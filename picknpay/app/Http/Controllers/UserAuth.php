@@ -100,81 +100,80 @@ class UserAuth extends Controller
          $logout_request =  $request->session()->forget('password');
          $logout_request =  $request->session()->forget('address');
          $logout_request =  $request->session()->forget('phone');
-
-
-                return redirect('/')->with('logout-success', 'Log Out Successful!');
+        return redirect('/')->with('logout-success', 'Log Out Successful!');
 
 
      }
 
-   function addtocart(Request $request){
-         $request->validate([
-               // 'name'=>'required',
+   function addToCart(Request $request){
+         $validator=$request->validate([
                'email'=>'required',
-               'product_ids'=>'required',
+               'barcode'=>'required',
             ]);
             $email=$request->input('email');
-
             $user = DB::table('carts')->whereEmail($email)->first();
             if ($user) {
-               $prod = $request->input('product_ids').','.$user->product_ids;
+               $prod = $request->input('barcode').','.$user->product_barcodes;
                $update = DB::table('carts')
                   ->where('email',$email)
                   ->update([
-                  'product_ids'=>$prod,
+                  'product_barcodes'=>$prod,
                   ]);
-            if($update) return response()->json(['success'=>'Laravel ajax example is being processed.']);
-            else return response()->json(['fail'=>'Laravel ajax example is being processed.']);
-
+               return $update?response()->json(['success'=>'Item added to cart.'])
+                : response()->json(['fail'=>'Process failed.']);
             }
             else{
                $query = DB::table('carts')->insert([
                'email'=>$request->input('email'),
-               'product_ids'=>$request->input('product_ids'),
+               'product_barcodes'=>$request->input('barcode'),
             ]);
-            if($query) return response()->json(['success'=>'Laravel ajax example is being processed.']);
+            if($query) return response()->json(['success'=>'Item added to cart.']);
          }
    }
-   function getUserCart(Request $request) {
-      $cart = DB::table('carts')->whereEmail($request->input('email'))->first();
-       if ($cart) {
-       $mainCart = explode(',',$cart->product_ids);
-                     $myCart = array_count_values($mainCart);
-                     $getProd = '';
-                     foreach ($myCart as $key => $value) {
-                        $getProd = $getProd . ',' . intval($key);
-                     }
-                     $getProd = ltrim( $getProd , ',' );
-                     $prods = DB::table('products')->get();
-                     $allUs = array();
-                     // while ($row = mysqli_fetch_assoc($resA)) {
-                     foreach ($prods as $key => $value) {
-                        // if more tha one value in list
-                        $allP = array($value->id,$value->name,$value->desc,$value->price);
-                        array_push($allUs, $allP);
-                      }
-                     $cartValues = array();
-                     foreach($allUs as $cartV){
-                        if (in_array($cartV[0],$mainCart)) {
-                        $allCP = array($cartV[0],$cartV[1],$cartV[2],$cartV[3]);
-                        array_push($cartValues, array($allCP, $myCart[$cartV[0]]));
-                     }
-                     }
-             return response()->json(['cart'=>$cartValues]);
 
-                  }
-            return response()->json(['success'=>'Laravel ajax example is being processed.']);
+   function getUserCart(Request $request) {
+    $requestEmail = $request->session()->get('email');
+      $cart = DB::table('carts')->whereEmail($requestEmail)->first();
+       if ($cart) {
+       $mainCart = explode(',',$cart->product_barcodes);
+
+            $myCart = array_count_values($mainCart);
+            $getProd = '';
+            foreach ($myCart as $key => $value) {
+            $getProd = $getProd . ',' . intval($key);
+            }
+            $getProd = ltrim( $getProd , ',' );
+            $prods = DB::table('products')->get();
+            $allUs = array();
+
+            foreach ($prods as $key => $value) {
+            // if more tha one value in list
+                $allP = array($value->barcode,$value->name,$value->desc,$value->price,$value->image);
+                array_push($allUs, $allP);
+            }
+            $cartValues = array();
+
+            foreach($allUs as $cartV){
+            if (in_array($cartV[0],$mainCart)) {
+                $allCP = array($cartV[0],$cartV[1],$cartV[2],$cartV[3], $cartV[4]);
+                array_push($cartValues, array($allCP, $myCart[$cartV[0]]));
+            }
+            }
+             return view('checkout',['cart'=>$cartValues]);
+
+        }
+            return view('checkout');
 
 
    }
 // delelete single product entry from cart by id
-   function deleteprod(Request $request){
+   function delProduct(Request $request){
          $email=$request->input('email');
          $user = DB::table('carts')->whereEmail($email)->first();
          if ($user) {
-             $pid  = strval($user->product_ids);
+             $pid  = strval($user->product_barcodes);
              $splitPidStr = explode(',',$pid);
-             if (($key = array_search($request->input('product_ids'), $splitPidStr)) !== false) {
+             if (($key = array_search($request->input('barcode'), $splitPidStr)) !== false) {
                   array_splice($splitPidStr, $key, 1);
             }
             $wholeStr = implode(",",$splitPidStr);
@@ -182,13 +181,15 @@ class UserAuth extends Controller
             $update = DB::table('carts')
                ->where('email',$email)
                ->update([
-               'product_ids'=>$wholeStr,
+               'product_barcodes'=>$wholeStr,
                ]);
+            return response()->json(['success'=>'Product deleted']);
+
          }
 
    }
    // Dellete All product with id entries
-   function deleteallprod(Request $request){
+   function delAllProduct(Request $request){
          $email=$request->input('email');
          $user = DB::table('carts')->whereEmail($email)->first();
          if ($user) {

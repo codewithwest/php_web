@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\AdminAuth;
 
@@ -26,11 +27,12 @@ Route::get('/products/product/{barcode}', function ($barcode) {
     return view('product_preview',['prodByBarcode' => $prod]);
 });
 
-// Route::get('/products/product/checkout', function () {
-//     // $request()->session()->get('email');
-//     // $prod = DB::table('customers')->where('email',$request)->get();
-//     // return view('indxe',['prodByBarcode' => $prod]);
+// Route::get('/products/user/checkout', function ($request) {
+//     // $request = $request()->session()->get('email');
+//     $prod = DB::table('customers')->where('email',$request)->get();
+//     return view('indxe',['prodByBarcode' => $prod]);
 // });
+
 
 
 
@@ -48,7 +50,6 @@ Route::get('/auth/signup', function () {
 Route::get('/auth/signup/individual', function () {
     return view('auth.ind_signup');
 });
-
 
 // Admin Interaction
 
@@ -162,3 +163,13 @@ Route::get('/store/admin/products/user/{id}', function ($id) {
 
 // Admin Products Add and Update
 Route::post('/store/admin/dashboard/products/add/new/product', [AdminAuth::class, 'addProduct']);
+
+// User Cart Work
+Route::post('/products/user/new/cart', [UserAuth::class, 'addToCart']);
+Route::post('/products/user/del/product/cart', [UserAuth::class, 'delProduct']);
+
+
+// Get User Cart
+Route::get('/products/user/checkout', [UserAuth::class, 'getUserCart']);
+
+//

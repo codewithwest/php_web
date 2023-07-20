@@ -1,0 +1,79 @@
+.product-info{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.prod-cont .image-cont,
+    .prod-cont .details-cont{
+        padding: 10px;
+        flex: 1 0 250px;
+        margin: 10px;
+}
+.prod-cont .image-cont{
+    height: 300px;
+    margin: auto;
+    }
+.details-cont>h2{
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+.details-cont>p,
+    .details-cont>h4{
+  padding: 10px 0;
+}
+.prod-control {
+    margin: 10px 0;
+    align-items: center;
+}
+.prod-control>button{
+    padding:10px 15px;
+}
+.prod-control>p{
+    padding:10px 15px;
+}
+
+.details-cont>button{
+    flex: 1 0 100px;
+    margin: 10px;
+    margin-left: 0;
+ color: #4e4b4b;
+    padding: 15px 35px;
+    border:none;
+    border-radius: 10px;
+    background:rgba(184, 184, 4, 0.679);
+}
+.details-cont .getLogin{
+    border: none;
+    color: #fff;
+    padding:12px  5px;
+    margin: 0 auto;
+    width: 95%;
+    background: rgba(184, 184, 4, 0.679);
+    margin-bottom: 10px;
+
+}
+
+.more-details>details{
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    transition: all 1.5s;
+
+}
+.more-details>details>summary{
+    border-radius: 10px;
+    background: rgba(184, 184, 4, 0.679);
+    padding: 20px;
+    margin: 10px 0;
+    transition: all 1.5s;
+}
+.more-details>details>p{
+    padding: 10px;
+
+}
+@media screen and (min-width: 900px) {
+    .product-info{
+        width: 60%;
+        margin: 0 auto;
+    }
+}

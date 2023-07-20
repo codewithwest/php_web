@@ -1,0 +1,82 @@
+.error{
+    color: rgba(235, 0, 0, 0.973);
+    font-size: small;
+    /* text-align: center; */
+}
+.help{
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.login-form-cont .sign-ind-form>h1{
+    width: 90%;
+}
+.login-form-cont .sign-ind-form {
+    width: 90%;
+}
+.login-form-cont .sign-ind-form>div{
+    flex: 1 0 250px;
+}
+.login-form-cont .sign-ind-form>button{
+    margin: 10px 0;
+}
+.help p{
+    padding: 5px;
+}
+.help:hover{
+    background: #dfdcdc;
+}
+.sign-up-main-cont>div{
+    margin: 5%;
+    flex: 1 0 350px;
+    height: fit-content;
+}
+.binary-links h2,
+.binary-links p,
+.binary-links h3 {
+    padding: 15px 0;
+}
+.binary-links>h4,
+.binary-links>p{
+    width: 90%;
+}
+.binary-links>div>a{
+    height: 25px;
+    padding: 15px 35px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    color: #fff;
+    text-decoration: none;
+    gap: 10px;
+    background: #003359;
+}
+.sign-up-main-cont .business-account-benefits{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.business-account-benefits>div>h3{
+    background: #e8e8e8;
+    padding: 15px;
+}
+.business-account-benefits>div>li{
+    margin: 10px;
+}
+.business-account-benefits .perks{
+    margin: 20px;
+}
+@media only screen and (min-width: 800px) {
+    .login-form-cont .sign-ind-form {
+        width: 65%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .login-form-cont .sign-ind-form {
+        width: 80%;
+    }
+}
+
+
+
+
+
+

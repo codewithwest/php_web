@@ -1,0 +1,39 @@
+.login-reg-modal{
+    background: rgba(66, 65, 65, 0.425);
+    height:100%;
+    z-index:10;
+    display: none;
+}
+.login-reg-modal .modal-cont{
+    background: #fff;
+    padding: 20px 40px;
+    margin:0 10%;
+}
+.collapse-log-reg-btn-cont{
+    box-shadow: -2px -2px rgba(230,3,3,.7);
+    align-self: flex-end;
+    font-weight: bolder;
+    height: 30px;
+}
+.collapse-log-reg-btn-cont button{
+    color: #fff;
+    margin: 2px;
+    background: rgba(230, 3, 3, .9);
+}
+.login-reg-modal .btns-cont{
+    margin-left: 200px;
+}
+.modal-cont>div>p{
+    margin: 2px;
+}
+  .modal-cont .btns-cont>a{
+    color: #fff;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+.modal-login-btn{
+    background: #003359;
+}
+.modal-reg-btn {
+    background: #ae0404;
+}

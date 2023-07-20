@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->unique();
-            $table->string('product_ids')->nullable();
-            $table->timestamps();
-        });
+                Schema::create('carts', function (Blueprint $table) {
+                    $table->id();
+                    $table->string('email')->unique();
+                    $table->string('product_ids')->nullable();
+                    $table->timestamps();
+                });
     }
 
     /**
