@@ -55,8 +55,8 @@
 
                 </div>
         </div>
-        <div class="cards-cont d-flex">
-            @for ($k = 0; $k < 5; $k++)
+        <div class="cards-cont">
+            @for ($k = 0; $k < 7; $k++)
                 <div class="dis-cards flex-col">
                     <img src="/images/home1.jpg" alt="">
                     <h5>This cards</h5>
@@ -64,6 +64,9 @@
                     <button>Ten {{ $k }}</button>
                 </div>
              @endfor
+             <div class="push-over">
+
+             </div>
         </div>
     </div>
 @endsection

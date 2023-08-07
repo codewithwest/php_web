@@ -124,24 +124,77 @@
 
 }
 .cards-cont{
-    border: 1px solid;
-    padding: 10px;
-    flex-wrap: nowrap;
+    display: flex;
     gap: 10px;
-    overflow-y: hidden;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling:inherit;
+
 }
+.cards-cont {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .cards-cont{
 .dis-cards{
     border-radius: 3px;
+    position: relative;
     box-shadow: -1px -1px 3px rgb(120, 142, 120),
     1px 1px 3px rgb(120, 142, 120);
-    width: 240px;
+    flex: 0 0 300px;
+
+
+}}
+.cards-cont:nth-child(2){
+    background: red;
+    animation: primary 10s linear infinite;
+
 }
+
+.push-over{
+    width: inherit;
+    height: inherit;
+    position: relative;
+    left: 0%;
+    top: 0%;
+    padding: 10px;
+    /* background: red; */
+    animation: secondary 10s linear infinite;
+}
+
+@keyframes primary {
+
+  0% {
+    left: 0%;
+  }
+  50%{
+    left: -100%;
+
+  }
+  to {
+    left: 0%;
+  }
+}
+@keyframes secondary {
+    0% {
+      left: 100%;
+    }
+    50%{
+      left: 0;
+
+    }
+    to {
+      left: 100%;
+    }
+  }
 .dis-cards>img{
     height: 220px;
     width: 100%;
 }
 .dis-cards>h5,.dis-cards>p {
     text-align: center;
+    white-space: pre-wrap;
     padding: 10px;
 }
 .dis-cards>button{
