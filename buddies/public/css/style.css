@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    font-family: 'Roboto','Open Sans', Arial, sans-serif;
+}
+
+:root{
+    --main-color: rgba(139, 139, 139, 0.3);
+    --primary-color: #f3f5f4;
+    --main-bg-color:linear-gradient(var(--main-color), var(--primary-color)), black;
+
+
+
+
+}
+
+html, body{
+    margin: 0;
+    background: var(--main-bg-color);
+    color: var(--primary-color);
+}
+
+

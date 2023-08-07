@@ -8,11 +8,11 @@
         <div class="checkout-cont  flex-col ">
             @foreach ($cart as $data)
                 <div class="checkout-prod-cart d-flex">
-                    <img src="/images/products/{{ substr(str($data[0][4]), 0) }} " />
+                    <img src="/images/products/{{ substr(strval($data[0][4]), 0) }} " />
                     <p hidden>R {{ $data[0][3] }}</p>
 
-                    <p>{{ substr(str($data[0][1]), 0) }}</p>
-                    <p>{{ substr(str($data[0][2]), 0) }}</p>
+                    <p>{{ substr(strval($data[0][1]), 0) }}</p>
+                    <p>{{ substr(strval($data[0][2]), 0) }}</p>
                     <p class="fill d-flex center-content">R {{ (substr($data[0][3], 0) - 0.01) * $data[1] }}</p>
                     <div class="prod-cart-control d-grid">
                         <form class="inc-cart-form">

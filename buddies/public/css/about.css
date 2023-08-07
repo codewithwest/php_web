@@ -1,0 +1,36 @@
+.about-content-cont{
+    flex-direction: row-reverse;
+}
+.about-body-cont{
+    width: 80%;
+}
+.about-body-cont>div{
+    border: 2px solid;
+    height: 400px;
+}
+
+.about-nav{
+    min-width: 15%;
+    max-width: 20%;
+    padding: 5px;
+}
+.about-nav>nav{
+    position: sticky;
+    top: 0;
+}
+.about-nav a{
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-shadow: -.5px .5px #2e2e2fb3;
+}
+.about-nav a:hover{
+    transition: all .4s;
+    padding: 11px;
+    background: #787879b3;
+    color: #fff;
+}

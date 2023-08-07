@@ -1,0 +1,87 @@
+.main-nav{
+    padding:15px  10px;
+    box-shadow: 0px 1px  rgba(101, 98, 98, 0.9);
+    margin-bottom: 30px;
+}
+.main-nav .logo-cont{
+    width: 120px;
+
+}
+.main-nav .logo-cont img{
+    border-radius: 100px;
+    width: 70px;
+    height: 70px;
+    box-shadow: .7px .8px rgba(22,22,22,.5),
+   -.8px -.7px rgba(22,22,22,.5);
+}
+.main-nav .nav-bar{
+    padding: 0 5px;
+    border-radius: 5px;
+}
+.main-nav .nav-bar a{
+    text-decoration: none;
+    color: inherit;
+    transition: all .6s;
+
+    padding:15px 25px;
+}
+.nav-bar a:hover{
+    color: #fff;
+    transition: all .6s;
+    background: #017a9c;
+}
+.profile-cont{
+    width: 100px;
+}
+.profile-cont svg{
+    width: 50%;
+    height: 60%;
+    fill: #07649e;
+    border: 2px dotted rgba(123, 121, 121, 0.9);
+    border-radius: 100px;
+}
+ .nav-bar>svg{
+    display: none;
+    width: 40px;
+    height: 40px;
+    fill: #07649e;
+    transition: all .5s;
+    box-shadow: 1px 1px 2px rgba(160, 158, 158, 0.9);
+    border-radius: 5px;
+    padding: 1px 3px;
+}
+
+@media screen and (max-width:600px) {
+.main-nav .nav-bar{
+    display: flex;
+}
+ .nav-bar>svg {
+    display: flex;
+ }
+.main-nav .nav-dd{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top:100px;
+    left: 0;
+    background: rgb(38, 40, 38);
+    width: 100%;
+    height: max-content;
+    z-index: 2;
+    visibility: hidden;
+}
+.main-nav .nav-dd a{
+    padding: 30px 30px;
+
+}
+.nav-bar>svg:hover
+{
+    transition:all .7s ;
+    box-shadow: -1px -1px 2px rgba(160, 158, 158, 0.9);
+}
+
+.nav-bar:hover .main-nav .nav-dd{
+    visibility: visible;
+    background: green;
+}
+}
