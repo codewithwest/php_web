@@ -1,0 +1,19 @@
+
+form select{
+    padding: 15px 30px;
+    border: none;
+    box-shadow: 10px 10px 15px var(--main-color),
+            -10px -10px 15px var(--main-color);
+            background: inherit;
+            color: rgb(28, 15, 181);
+            font-weight: bold;
+}
+form select::selection {
+    padding: 15px 30px;
+    border: none;
+    box-shadow: 10px 10px 15px var(--main-color),
+        -10px -10px 15px var(--main-color);
+    background: inherit;
+    color: rgb(28, 15, 181);
+    font-weight: bold;
+}

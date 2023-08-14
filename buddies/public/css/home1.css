@@ -1,0 +1,220 @@
+
+.home-cont{
+    gap: 10px;
+    padding: 20px;
+}
+/* Image carousel */
+.image-carousel{
+     width: auto;
+    height: 300px;
+    animation: slide 3s infinite ease-in-out;
+}
+@keyframes slide {
+    from{box-shadow:  1px 1px 2px  rgb(140, 136, 136);}
+
+    to{box-shadow: -1px -1px 2px rgb(140, 136, 136);}
+
+}
+.image-carousel>.carousel-btns-cont{
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    right: 20px;
+    align-self: center;
+}
+
+.image-carousel>.carousel-btns-cont>button {
+    margin: 10px;
+    padding: 20px 10px;
+    background: var(--main-bg-color);
+    color: inherit;
+    filter: drop-shadow(2px 2px 3px var(--main-bg-color));
+}
+.image-carousel>.pointer-divs{
+    position: absolute;
+    width: inherit;
+    align-self: flex-end;
+}
+.image-carousel>.pointer-divs>div {
+    position: relative;
+   width: fit-content;
+}
+.image-carousel>.pointer-divs>div>div {
+    padding: 7px;
+    background: rgb(120, 142, 120);
+    margin: 10px;
+    border-radius: 100px;
+}
+
+.info-cards{
+    filter: drop-shadow(-1px -1px 2px  #e3d6d681);
+    border-radius: 20px;
+    flex: 1 0 350px;
+    box-shadow: 1px 1px rgba(33, 33, 33, .7),-1px -1px rgba(33, 33, 33, .7);
+    background: var(--info-card-background-color);
+    animation:2s card-layout;
+}
+.info-cards .card-wrapper{
+    border-radius: inherit;
+    box-shadow:
+    .21px .21px 1px rgba(33, 33, 33, .7),
+    -.21px -.21px 1px rgba(33, 33, 33, .7);
+    margin: 3.5px;
+}
+.card-img-cont{
+    border-radius: inherit;
+}
+.card-body{
+    padding-top: 10px;
+    border-radius: inherit;
+}
+.card-body h1+p{
+    margin: 5px;
+
+}
+.card-wrapper img{
+    border-radius: inherit;
+    height: 220px;
+    width: 180px;
+    margin: 5px;
+}
+ .card-footer {
+    border-radius: inherit;
+    margin-left: auto;
+    margin-top: auto;
+    align-self: flex-end;
+    justify-self: flex-end;
+
+}
+.card-footer a{
+    margin-bottom: 2px;
+}
+.card-footer a:hover{
+    transition: all .7s;
+    margin-bottom: 3px;
+    background: #7f7f7f85;
+}
+.card-footer p{
+    font-size: large;
+    margin: 8px;
+}
+.card-explore{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 2px;
+    border-radius: 100px;
+    box-shadow:  .6px .6px rgba(33, 33, 33, .9),
+     -.6px -.6px rgba(33, 33, 33, .9);
+}
+
+
+.card-explore svg{
+    align-self: flex-end;
+    margin: 5px;
+    width: 40px;
+    fill: var(--primary-color);
+}
+@keyframes card-layout{
+    0%{
+
+    }
+    100%{
+
+    }
+
+}
+.cards-cont{
+    display: flex;
+    gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling:inherit;
+
+}
+.cards-cont {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .cards-cont{
+.dis-cards{
+    border-radius: 3px;
+    position: relative;
+    box-shadow: -1px -1px 3px rgb(120, 142, 120),
+    1px 1px 3px rgb(120, 142, 120);
+    flex: 0 0 300px;
+
+
+}}
+.cards-cont:nth-child(2){
+    background: red;
+    animation: primary 10s linear infinite;
+
+}
+
+.push-over{
+    width: inherit;
+    height: inherit;
+    position: relative;
+    left: 0%;
+    top: 0%;
+    padding: 10px;
+    /* background: red; */
+    animation: secondary 10s linear infinite;
+}
+
+@keyframes primary {
+
+  0% {
+    left: 0%;
+  }
+  50%{
+    left: -100%;
+
+  }
+  to {
+    left: 0%;
+  }
+}
+@keyframes secondary {
+    0% {
+      left: 100%;
+    }
+    50%{
+      left: 0;
+
+    }
+    to {
+      left: 100%;
+    }
+  }
+.dis-cards>img{
+    height: 220px;
+    width: 100%;
+}
+.dis-cards>h5,.dis-cards>p {
+    text-align: center;
+    white-space: pre-wrap;
+    padding: 10px;
+}
+.dis-cards>button{
+    margin: 4px;
+    margin-top: 20px;
+    padding: 10px 25px;
+    align-self: flex-end;
+    box-shadow: -1px -1px 5px rgb(120, 142, 120);
+    border: none;
+    background: rgba(33, 33, 33, .4);
+    color: aliceblue;
+    border-radius: 3px;
+
+}
+@media screen and (min-width:900px) {
+    .home-cont{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .image-carousel {
+            height: 400px;
+        }
+}

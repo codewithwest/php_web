@@ -1,16 +1,19 @@
 .main-nav{
     padding:15px  10px;
     box-shadow: 0px 1px  rgba(101, 98, 98, 0.9);
-    margin-bottom: 30px;
+    margin-bottom: 60px;
 }
 .main-nav .logo-cont{
     width: 120px;
 
 }
 .main-nav .logo-cont img{
+    position: absolute;
     border-radius: 100px;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
+    top:  30px;
+    left: 20px;
     box-shadow: .7px .8px rgba(22,22,22,.5),
    -.8px -.7px rgba(22,22,22,.5);
 }

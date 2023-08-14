@@ -1,0 +1,76 @@
+.footer-cont{
+    display:none;
+}
+.main-nav>.nav-bar,
+.profile-cont {
+    display: none;
+    width: 100px;
+}
+.main-nav{
+    height: 50px;
+}
+.join-us{
+    min-height: 72vh;
+    padding-bottom: 20px;
+    height: auto;
+}
+form{
+    width: 50%;
+    padding: 20px;border-radius: 10px;
+    box-shadow: 10px 10px 15px var(--main-color),
+        -10px -10px 15px var(--main-color);
+}
+form>div{
+    padding: 10px;
+}
+form>div>label{
+    font-size: large;
+    flex: 1 0 100px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding: 10px;
+}
+form>div>input {
+    flex: 1 0 200px;
+}
+form>button,
+form input {
+    padding: 15px 10px;
+    border-radius: 5px;
+    background: none;
+    width: 60%;
+    border: none;
+    background: rgba(105, 104, 106, 0.473);
+    color: inherit;
+    font-size: larger;
+    box-shadow: 10px 10px 15px var(--main-color),
+            -10px -10px 15px var(--main-color);
+
+}
+form input{
+    outline: none;
+    border-bottom: 1.5px solid rgba(9, 22, 200, 0.573);
+}
+form input:focus {
+    outline: none;
+    border-bottom: 1.5px solid rgba(168, 200, 9, 0.573);
+}
+form button:hover {
+    background: inherit;
+    color: black;
+}
+
+p{
+    right:50px;
+    margin: 10px;
+}
+p>a{
+    color: inherit;
+}
+p>a:hover {
+    color: blue;
+}
+
+
+
