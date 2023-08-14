@@ -40,7 +40,7 @@ class QuizHandler extends Controller
     }
 
     function markQuiz(Request $quiz_submit){
-        $score = 0;
+
         $validator=$quiz_submit->validate([
         'id'=>'required',
         'answer'=>'required',
@@ -51,7 +51,18 @@ class QuizHandler extends Controller
          // get users inventory
          $question = DB::table('quizzes')->Where('id',$id)->first();
          if ($question->answer == $answer){
-            return redirect()->back()->with('success','Correct Answer');
+
+            $question_num = intval($quiz_submit->session()->get('question_num'))+1;
+            $score = intval($quiz_submit->session()->get('score'))+1;
+            session()->put(['question_num' => $question_num]);
+            session()->put(['score' => $score]);
+            if ($question_num>4) {
+                return   redirect('/quiz/score');
+            }
+
+            return redirect()->back();
+         }else {
+            return redirect()->back()->with('failure','Incorrect Answer');
 
          }
           redirect()->back()->withErrors($validator);
@@ -84,7 +95,7 @@ class QuizHandler extends Controller
                   ->update([
                   'product_barcodes'=>$prod,
                   ]);
-               return $update?response()->json(['success'=>'Item added to cart.'])
+               return $update?response()->json(['question_num'=>0])
                 : response()->json(['fail'=>'Process failed.']);
             }
             else{

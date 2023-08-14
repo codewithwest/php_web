@@ -1,0 +1,24 @@
+.score-cont{
+    margin-bottom: 50px;
+}
+.score{
+    margin: auto;
+    width: fit-content;
+    border-radius: 1000px;
+    padding: 15px;
+    width: 250px;
+    height:250px;
+    box-shadow: 10px 10px 15px var(--main-color),
+            -10px -10px 15px var(--main-color);
+    /* background: linear-gradient(90deg, black 1%,green 90%, transparent,transparent); */
+   /* background:  linear-gradient( 150deg, green 90%,red 10%); */
+
+    background: conic-gradient(from 180deg ,rgb(13, 201, 13) 90%,black 1%,red);
+    border-radius:50%;
+
+}
+.score h1{
+    border-radius: inherit;
+    background: black;
+}
+
