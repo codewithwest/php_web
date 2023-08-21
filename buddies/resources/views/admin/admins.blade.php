@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('link_redirect_by_section')
+@section('link_redirect')
     <a href="/store/admin/dashboard/new/admin" class="m-auto">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill-lock"
             viewBox="0 0 16 16">

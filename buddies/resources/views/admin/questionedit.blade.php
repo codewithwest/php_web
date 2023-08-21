@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
-@section('link_redirect_by_section')
+@section('link_redirect')
     <a href="/admin/dashboard/new/user" class="m-auto">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-plus-fill"
             viewBox="0 0 16 16">
@@ -10,7 +10,7 @@
     </a>
 @endsection
 @section('link_redirect')
-    <a href="/admin/dashboard/questions" class="m-auto link fw-bold">All Questions</a>
+    <a href="/admin/dashboard/questions" class="m-auto link fw-bold">Questions</a>
 @endsection
 
 @if (Session::has('success'))

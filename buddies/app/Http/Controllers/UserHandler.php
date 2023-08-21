@@ -51,7 +51,7 @@ class UserHandler extends Controller
                 // return print_r($login_req->session()->get('users'));
                 // return session()->get('user.email');
                 return str_contains(str(session()->get('user.email')), '.admin@buddies')? redirect('/admin/dashboard'):
-                redirect()->back()->with('login-success', 'Login Successful!');
+                redirect('/')->with('success', 'Login Successful!');
                }
             else {
                 // return Redirect::to(URL::previous());

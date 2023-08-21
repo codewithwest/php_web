@@ -12,7 +12,6 @@
                 Log Out
             </div>
         </div>
-
     </a>
 @endsection
 

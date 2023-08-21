@@ -66,10 +66,14 @@ Route::get('/quiz/score', function () {
 // });
 
 
-// Create New Quiz
-Route::get('/quiz/new', function () {
+// Create New Question
+Route::get('/admin/dashboard/questions/new', function () {
     $option = array(1,2,3);
-    return view('layouts.newquiz',['option' => $option]);
+    return view('admin.newquiz',['option' => $option]);
+});
+Route::get('/admin/dashboard/user/new', function () {
+    return view('admin.new_user');
+
 });
 // Route::get('/quiz/type/{id}', function ($userId) {
 
@@ -84,7 +88,8 @@ Route::get('/new/quiz/', function () {
 });
 Route::get('/clear/session', function () {
     session()->flush();
-    return  redirect('/quiz');
+    return redirect()->back()->with('success','Logout succesful, Do visit again!');
+
 });
 Route::get('/about', function () {
     return view('layouts.about');

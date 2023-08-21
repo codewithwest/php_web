@@ -18,8 +18,6 @@
             <div class="alert-success m-auto fw-bold ">
                 {{ Session::get('success') }}
             </div>
-
-
         </div>
         <script>
             setTimeout(() => document.querySelector('.alert-success-cont').style.display = "none", 3500)

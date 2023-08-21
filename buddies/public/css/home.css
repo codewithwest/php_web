@@ -18,14 +18,15 @@
 
 .info>div>.img {
     flex: 1 0 250px;
-    height: 300px;
+    /* height: 300px; */
 }
 
 .info>div>.text {
     padding: 10px;
     flex: 1 0 250px;
-    background: green;
-    height: 300px;
+    font-size: medium;
+    background-color: var(--main-color);
+    /* height: 300px; */
 
 }
 

@@ -32,7 +32,7 @@
                 </svg>
                 <div class="dd-content pos-abs flex-col">
                     <a href="/"  >Home</a>
-                    <a href="/about"  >About</a>
+                    <a href=""  >About</a>
                     <a href="/quiz"  >Quiz</a>
                     <a href="/profile">Profile</a>
                     <a href="/quizzes/history">History</a>
@@ -58,7 +58,7 @@
                 </svg>
                 <div class="dd-content pos-abs flex-col">
                     <a href="/">Home</a>
-                    <a href="/about">About</a>
+                    <a href="">About</a>
                     <a href="/quiz">Quiz</a>
                     <a href="/signin">Login</a>
 
