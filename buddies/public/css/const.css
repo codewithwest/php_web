@@ -35,6 +35,11 @@
     margin: auto 0;
 }
 
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .links {
     text-decoration: none;
     color: inherit;

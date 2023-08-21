@@ -1,0 +1,83 @@
+:root {
+    --product-items-auto-height: 150px;
+    --product-items-min-height: 100px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    color: #fff;
+    box-shadow: 0 0 5px var(--main-color);
+}
+
+.styled-table thead tr {
+    border-radius: 5px;
+    background: var(--main-color);
+    color: #fff;
+    text-align: center;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 10px;
+}
+
+.del-user {
+    color: rgba(117, 4, 4, 0.514);
+    margin: 5px;
+}
+
+.del-user:hover {
+    color: rgba(224, 6, 6, 0.814);
+
+}
+
+.edit-user,
+.del-user {
+    height: 25px;
+    width: 25px;
+
+}
+
+.edit-user:hover {
+    color: rgb(11, 115, 175);
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #6b6a6a;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .styled-table {
+        border-collapse: collapse;
+        margin: 5px 0;
+        font-size: 0.6em;
+        font-family: sans-serif;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 2px 3px;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .styled-table {
+
+        font-size: 0.75em;
+
+    }
+
+}

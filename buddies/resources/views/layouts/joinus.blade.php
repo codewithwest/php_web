@@ -8,14 +8,15 @@
     <div class="join-us cont h-100 flex-col center-content">
         <p>Already a buddy yet?<a href="/signin">Sign In</a></p>
 
-        <form action="" class="flex-col m-auto-hor">
+        <form action=""  method="post" class="flex-col m-auto-hor">
+            @csrf
             <div class="d-flex wrap">
-                <label for="fist-name">First Name</label>
-                <input type="text" name="fist-name">
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname">
             </div>
             <div class="d-flex wrap">
-                <label for="last-name">Last Name</label>
-                <input type="text" name="last-name">
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname">
             </div>
             <div class="d-flex wrap">
                 <label for="email">Email</label>

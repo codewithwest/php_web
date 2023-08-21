@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class QuizHandler extends Controller
 {
+   function loginUser(Request $request){
+
+   }
     //Add Into Database function
-   function addQuiz(Request $request){
+    function addQuiz(Request $request){
         $validator = $request->validate([
             'level'=>'required',
             'question'=>'required',
@@ -21,16 +24,15 @@ class QuizHandler extends Controller
             'answer'=>'required',
          ]);
 
-         $query = DB::table('quizzes')->insert([
-            'level'=>$request->input('level'),
-            'type'=>$request->input('type'),
-            'question'=>$request->input('question'),
-            'option1'=>$request->input('option1'),
-            'option2'=>$request->input('option2'),
-            'option3'=>$request->input('option3'),
-            'option4'=>$request->input('option4'),
-            'answer'=>$request->input('answer'),
-
+         $query = DB::table('questions')->insert([
+            'level'=>$request->level,
+            'type'=>$request->type,
+            'question'=>$request->question,
+            'option1'=>$request->option1,
+            'option2'=>$request->option2,
+            'option3'=>$request->option3,
+            'option4'=>$request->option4,
+            'answer'=>$request->answer,
          ]);
          print_r($validator);
         $validator?redirect('/auth/login'):
@@ -38,73 +40,102 @@ class QuizHandler extends Controller
          return redirect()->back()->with('success', ' Registration Successful!');
 
     }
+    // Create Quiz Func
+    function createQuiz(Request $request){
+        $questions = DB::table('questions')
+        ->where('level', $request->level)
+        ->where('type', $request->type)
+        ->select('id','type','question','level','option1','option2','option3','option4','answer')
+        ->inRandomOrder()->limit($request->limit)->get();
+        // add Questions and quiz data to Session
+        session(['questions' => $questions],);
+        $question_bank = [];
+        foreach ($questions as $key => $value) {
+            array_push($question_bank, $value->id);
+        }
+        session()->put('quiz_data',[
+            'question_num' => 0,
+            'score' => 0,
+            'level' => intval($questions[0]->level),
+            'type' => $questions[0]->type,
+            'questions'=>$question_bank,
+            'answers'=>[],
+        ],);
+        return redirect('/quiz/attempt');
 
+    }
+    // Quiz marker function
     function markQuiz(Request $quiz_submit){
-
+        // Validate the posted data
         $validator=$quiz_submit->validate([
         'id'=>'required',
         'answer'=>'required',
-       ]);
-      // get user email and pass from request
-         $id = $quiz_submit->input('id');
-         $answer = $quiz_submit->input('answer');
-         // get users inventory
-         $question = DB::table('quizzes')->Where('id',$id)->first();
-         if ($question->answer == $answer){
-
-            $question_num = intval($quiz_submit->session()->get('question_num'))+1;
-            $score = intval($quiz_submit->session()->get('score'))+1;
-            session()->put(['question_num' => $question_num]);
-            session()->put(['score' => $score]);
-            if ($question_num>4) {
-                return   redirect('/quiz/score');
+        ]);
+        if(session()->get('quiz_data.question_num')+1 <= count(session()->get('quiz_data.questions'))){
+            // get question id and answer from request
+            $id = $quiz_submit->id;
+            $answer = $quiz_submit->answer;
+            // find the question
+            $question = DB::table('questions')->Where('id',$id)->first();
+            // Get question num and score from session and add 1
+            $question_num = intval($quiz_submit->session()->get('quiz_data.question_num'))+1;
+            $score = intval($quiz_submit->session()->get('quiz_data.score'))+1;
+            // Increment score if answer is correct
+            if($question->answer == $answer){
+                session()->put('quiz_data.score', $score);
+                // session()->push('quiz_data.question', $question->id);
+                // session()->push('quiz_data.answers', $answer);
             }
-
-            return redirect()->back();
-         }else {
-            return redirect()->back()->with('failure','Incorrect Answer');
-
-         }
-          redirect()->back()->withErrors($validator);
-         // if user exist run check
+            session()->push('quiz_data.answers', $answer);
+            // Redirect to score page if answer is last
+            // return gettype(session()->get('quiz_data.score'));
+            if($question_num > count(session()->get('questions'))-1){
+                $query = DB::table('quizzes')->insert([
+                'email'=>session()->get('user.email'),
+                'level'=>session()->get('quiz_data.level'),
+                'type'=> session()->get('quiz_data.type'),
+                'questions'=>implode(",",session()->get('quiz_data.questions')),
+                'answers'=>implode(",",session()->get('quiz_data.answers')),
+                'score'=>strval(session()->get('quiz_data.score')),
+            ]);
+                return redirect('/quiz/score');
+            }else {
+                session()->put('quiz_data.question_num', $question_num);
+            }
+            // If validation retuens false return back with errors
+            return $validator
+                ?redirect()->back():
+                redirect()->back()->withErrors($validator);
+        }else{
+            return redirect('/quiz/score');
+        }
 
     }
-   //   Logout Auth
-   function  logoutCustomer(Request $request){
-         $logout_request =  $request->session()->forget('name');
-         $logout_request =  $request->session()->forget('email');
-         $logout_request =  $request->session()->forget('password');
-         $logout_request =  $request->session()->forget('address');
-         $logout_request =  $request->session()->forget('phone');
-        return redirect('/')->with('logout-success', 'Log Out Successful!');
-
-
-     }
-
+    // Logout Auth
    function addToCart(Request $request){
-         $validator=$request->validate([
-               'email'=>'required',
-               'barcode'=>'required',
-            ]);
-            $email=$request->input('email');
-            $user = DB::table('carts')->whereEmail($email)->first();
-            if ($user) {
-               $prod = $request->input('barcode').','.$user->product_barcodes;
-               $update = DB::table('carts')
-                  ->where('email',$email)
-                  ->update([
-                  'product_barcodes'=>$prod,
-                  ]);
-               return $update?response()->json(['question_num'=>0])
-                : response()->json(['fail'=>'Process failed.']);
-            }
-            else{
-               $query = DB::table('carts')->insert([
-               'email'=>$request->input('email'),
-               'product_barcodes'=>$request->input('barcode'),
-            ]);
-            if($query) return response()->json(['success'=>'Item added to cart.']);
-         }
+        $validator=$request->validate([
+            'email'=>'required',
+            'barcode'=>'required',
+        ]);
+        $email=$request->input('email');
+        $user = DB::table('carts')->whereEmail($email)->first();
+        if ($user) {
+            $prod = $request->input('barcode').','.$user->product_barcodes;
+            $update = DB::table('carts')
+                ->where('email',$email)
+                ->update([
+                'product_barcodes'=>$prod,
+                ]);
+            return $update?response()->json(['question_num'=>0])
+            : response()->json(['fail'=>'Process failed.']);
+        }
+        else{
+            $query = DB::table('carts')->insert([
+            'email'=>$request->input('email'),
+            'product_barcodes'=>$request->input('barcode'),
+        ]);
+        if($query) return response()->json(['success'=>'Item added to cart.']);
+        }
    }
 
    function getUserCart(Request $request) {

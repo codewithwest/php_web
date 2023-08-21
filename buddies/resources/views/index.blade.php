@@ -29,5 +29,9 @@
         @include('const._footer')
     </footer>
 </body>
+<script>
+        setTimeout(() => document.querySelectorAll('.alert-success-cont')
+            .forEach(element => element.style.display = "none"), 3500)
 
+    </script>
 </html>

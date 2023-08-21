@@ -1,0 +1,8 @@
+.alert-success-cont {
+    z-index: 2;
+    position: absolute;
+    background: rgba(72, 255, 0, 0.315);
+    font-size: large;
+    font-style: italic;
+    padding: 20px 0;
+}

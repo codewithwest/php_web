@@ -1,19 +1,22 @@
-.quiz-cont{
+.quiz-cont {
     margin-bottom: 50px;
 }
-form{
+
+form {
     margin: auto;
     width: fit-content;
     border-radius: 10px;
     padding: 20px;
     width: 50%;
-    box-shadow: 10px 10px 15px var(--main-color),
-            -10px -10px 15px var(--main-color);
+    box-shadow: 5px 5px 5px var(--main-color),
+        -5px -5px 5px var(--main-color);
 }
-form h3{
+
+form h3 {
     margin: 20px 0;
 }
-form>.quiz-num{
+
+form>.quiz-num {
     margin: 0;
     text-align: center;
     width: fit-content;
@@ -22,15 +25,18 @@ form>.quiz-num{
     box-shadow: inherit;
     border: 1px solid;
 }
-form button{
+
+form button {
     border: none;
     color: aquamarine;
     border-radius: inherit;
     background: inherit;
     padding: 20px 10px;
-    box-shadow:  10px 10px 15px var(--main-color),
-            -10px -10px 15px var(--main-color);;
+    box-shadow: 5px 5px 5px var(--main-color),
+        -5px -5px 5px var(--main-color);
+
 }
-form label{
+
+form label {
     margin: 10px;
 }

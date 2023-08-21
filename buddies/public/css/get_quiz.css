@@ -1,0 +1,78 @@
+.quiz-cont {
+    margin-bottom: 50px;
+}
+
+form {
+    margin: auto;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 10px 10px 15px var(--main-color),
+        -10px -10px 15px var(--main-color);
+}
+
+form h3 {
+    margin: 20px 0;
+}
+
+form>h2 {
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px;
+
+    box-shadow: inherit;
+}
+
+form button {
+    border: none;
+    color: aquamarine;
+    border-radius: inherit;
+    background: inherit;
+    padding: 20px 10px;
+    box-shadow: 10px 10px 15px var(--main-color),
+        -10px -10px 15px var(--main-color);
+    ;
+}
+
+form>div {
+    margin: 10px 0;
+}
+
+form label {
+    flex: 1 0 80px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+form select {
+    flex: 1 0 80px;
+    padding: 10px;
+    border-radius: 5px;
+    background: inherit;
+    box-shadow: inherit;
+    color: aliceblue;
+    font-size: large;
+}
+
+form select option {
+    color: black;
+}
+
+@media screen and (min-width:900px) {
+    form select {
+        flex: 1 0 80px;
+        padding: 30px 10px;
+    }
+}
+
+
+form::selection {
+    flex: 1 0 80px;
+    padding: 10px;
+    border-radius: 5px;
+    background: none;
+    box-shadow: inherit;
+    color: green;
+}

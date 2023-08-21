@@ -60,12 +60,7 @@
                     <div class="error">{{ $message }}</div>
                 @enderror
             </div>
-
-
-
-
-
-            <button class="m-auto-hor">Sign Up</button>
+            <button class="m-auto-hor">Create Quiz</button>
         </form>
     </div>
 @endsection

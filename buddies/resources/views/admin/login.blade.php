@@ -4,10 +4,8 @@
 @endsection
 
 @section('main_content')
-@if (Session::get('user.email'))
+@if (Session::get('user'))
     @php
-    str(Session::get('user.email'),'.admin')?
-    header("Location: " . URL::to('/admin/dashboard'), true, 302):
     header("Location: " . URL::to('/'), true, 302);
     exit();
     @endphp
@@ -28,8 +26,8 @@
     @endif
     <link rel="stylesheet" href="{{ asset('css/joinus.css') }}">
     <div class="join-us cont h-100 flex-col center-content">
-        <p>Not a buddy yet?<a href="/signup">Join us</a></p>
-        <form action="" method="post" class="flex-col m-auto-hor">
+        <p style="color:rgba(170, 11, 11, 0.671);">For Authorized Personel Only</a></p>
+        <form action="/signin" method="post" class="flex-col m-auto-hor">
             @csrf
             <div class="d-flex wrap">
                 <label for="email">Email</label>

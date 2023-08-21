@@ -1,36 +1,47 @@
-.home-cont{
-        margin: 10px 0px;
+.home-cont {
+    margin: 10px 0px;
 
 }
-.home-cont>.banner{
+
+.home-cont>.banner {
     height: 350px;
 
 }
-.info>h2{
+
+.info>h2 {
     padding: 30px 0;
 }
-.info>div{
+
+.info>div {
+    min-height: 300px;
+}
+
+.info>div>.img {
+    flex: 1 0 250px;
     height: 300px;
 }
 
-.info>div>.img{
-    flex: 1 0 250px;
-}
-.info>div>.text{
+.info>div>.text {
     padding: 10px;
     flex: 1 0 250px;
+    background: green;
+    height: 300px;
 
 }
-.info>div>.text>p{
-        padding: 20px;
-    }
+
+.info>div>.text>p {
+    padding: 20px;
+}
+
 .info>div:nth-child(even) {
     flex-direction: row;
 }
+
 .info>div:nth-child(odd) {
     flex-direction: row-reverse;
 }
-.carousel{
+
+.carousel {
     margin: 25px 20px;
     padding: 20px;
     display: grid;
@@ -38,10 +49,12 @@
     grid-template-columns: 100%;
     gap: 10px;
 }
-.carousel>.imgs{
+
+.carousel>.imgs {
     width: 100%;
     height: 300px;
 }
+
 .carousel>.imgs>img:nth-child(1),
 .carousel>.imgs>img:nth-child(3) {
     width: calc(100%/2.5);
@@ -50,7 +63,8 @@
     opacity: .7;
     box-shadow: 5px 5px 10px var(--main-color), -5px -5px 10px var(--main-color);
 }
-.carousel>.imgs>img:nth-child(2){
+
+.carousel>.imgs>img:nth-child(2) {
     position: absolute;
     width: calc(100%/2.5);
     height: inherit;
@@ -61,21 +75,22 @@
     margin-bottom: 20px;
 }
 
-.carousel>.imgs>img{
+.carousel>.imgs>img {
     height: inherit;
 }
-.carousel-btns{
+
+.carousel-btns {
     margin: auto;
     gap: 20px;
 }
-.carousel-btns>button{
+
+.carousel-btns>button {
     padding: 20px;
     font-weight: bolder;
     border: none;
     border-radius: 10px;
     background: inherit;
-    box-shadow: 5px 5px 10px var(--main-color)
-        ,-5px -5px 10px var(--main-color);
+    box-shadow: 5px 5px 10px var(--main-color), -5px -5px 10px var(--main-color);
 }
 
 
@@ -84,19 +99,35 @@
         height: 480px;
 
     }
+
     .info>div {
         height: 400px;
     }
-    .info>.header{
+
+    .info>.header {
         font-size: 32px;
     }
-        .info>div>.text>p {
-            padding: 20px 80px;
-        }
+
+    .info>div>.text>p {
+        padding: 20px 80px;
+    }
+
     .carousel {
-            grid-template-rows: 380px 80px;
-        }
+        grid-template-rows: 380px 80px;
+    }
+
     .carousel>.imgs {
-            height: 380px;
-        }
+        height: 380px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .carousel {
+        grid-template-rows: 220px 80px;
+    }
+
+    .carousel>.imgs {
+        height: 220px;
+    }
+
 }

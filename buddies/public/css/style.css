@@ -1,22 +1,74 @@
-*{
+* {
     margin: 0;
-    font-family: 'Roboto','Open Sans', Arial, sans-serif;
+    font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
 }
 
-:root{
-    --main-color: rgba(139, 139, 139, 0.3);
+:root {
+    --main-color: rgba(32, 31, 31, 0.3);
+    --hover-color: #017a9c;
     --primary-color: #f3f5f4;
-    --main-bg-color:linear-gradient(var(--main-color), var(--primary-color)), black;
-
-
-
-
+    /* --main-bg-color: linear-gradient(var(--main-color), var(--primary-color)), black; */
+    --main-bg-color: var(--main-color);
 }
 
-html, body{
+html,
+body {
     margin: 0;
-    background: var(--main-bg-color);
+    width: 100%;
+    height: auto;
+    background: var(--main-color);
     color: var(--primary-color);
 }
 
+main {
+    min-height: 78.2vh;
+}
 
+.by-line {
+    background: rgba(22, 22, 2, .2);
+    padding: 5px 10px;
+    box-shadow: 0px -1px rgba(22, 22, 2, .2);
+    font-size: smaller;
+    text-align-last: right;
+}
+
+
+.link-tool {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    /* If you want dots under the hoverable text */
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    /* width: 160px; */
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 10;
+    top: 90%;
+    left: 50%;
+    right: 0;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.link-tool:hover .popuptext {
+    visibility: visible;
+}

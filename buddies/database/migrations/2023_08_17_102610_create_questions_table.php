@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->char('level');
             $table->char('type')->nullable();
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->char('option2');
             $table->char('option3');
             $table->char('option4');
-
             $table->char('answer');
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('questions');
     }
 };
