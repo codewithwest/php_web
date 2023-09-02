@@ -4,12 +4,12 @@
 @endsection
 
 @section('main_content')
-@if (Session::get('user'))
+{{-- @if (Session::get('user'))
     @php
     header("Location: " . URL::to('/'), true, 302);
     exit();
     @endphp
-@else
+@else --}}
  <link rel="stylesheet" href="{{ asset('css/quiz.css') }}">
     @if (Session::has('success'))
         <div class="alert-success-cont top-0 pos-abs d-flex center-content w-100">
@@ -41,5 +41,5 @@
             <button class="m-auto-hor">Sign In</button>
         </form>
     </div>
-    @endif
+    {{-- @endif --}}
 @endsection

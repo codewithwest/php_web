@@ -3,6 +3,7 @@
     About
 @endsection
 @section('main_content')
+
     <div class="about-content-cont d-flex">
 
         <div class="about-nav d-flex">

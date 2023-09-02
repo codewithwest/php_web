@@ -50,7 +50,8 @@
                         <!-- <td class="t-pass brand m-auto">{{ $data->password }}</td> -->
                         <td class="d-flex center-content h-100">
                             <a class="del-user center-content">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
                                     class="bi bi-trash" viewBox="0 0 16 16">
                                     <path
                                         d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
@@ -80,18 +81,27 @@
             del_quiz_int.forEach(btn => {
                 btn.addEventListener('click', async (e) => {
                     e.preventDefault()
-                    let email = btn.children[1].textContent
+                    let email = btn.children[1].textContent.toString().trim()
                     console.log(email)
                     await fetch('/user/del', {
-                        method: "POST",
-                        credentials: "same-origin",
-                        body: JSON.stringify({
-                            email: email,
-                        })
+                        headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    "X-Requested-With": "XMLHttpRequest",
+                    // "X-CSRF-Token": formData['_token']
+                },
+                    method: "POST",
+                    credentials: "same-origin",
+                    body: JSON.stringify({
+                        email: email,
                     })
-                        .then(e => console.log(e)).then(e => {
-                            btn.parentElement.parentElement.style.display = "none"
-                        })
+                })
+                .then(e => console.log(e)).then(e => {
+                    btn.parentElement.parentElement.style.background = "rgba(220,5,10,.7)"
+                    setTimeout(() => {
+                    btn.parentElement.parentElement.style.display = "none"
+                    }, 1500);
+                })
                 })
             })
         })()

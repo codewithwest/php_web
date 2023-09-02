@@ -6,3 +6,12 @@
     font-style: italic;
     padding: 20px 0;
 }
+
+.alert-failure-cont {
+    z-index: 2;
+    position: absolute;
+    background: rgba(182, 44, 2, 0.473);
+    font-size: large;
+    font-style: italic;
+    padding: 20px 0;
+}

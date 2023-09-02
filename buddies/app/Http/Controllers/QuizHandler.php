@@ -24,7 +24,7 @@ class QuizHandler extends Controller
             'answer'=>'required',
          ]);
 
-         $query = DB::table('questions')->insert([
+        $query = DB::table('questions')->insert([
             'level'=>$request->level,
             'type'=>$request->type,
             'question'=>$request->question,
@@ -33,11 +33,11 @@ class QuizHandler extends Controller
             'option3'=>$request->option3,
             'option4'=>$request->option4,
             'answer'=>$request->answer,
-         ]);
+        ]);
          print_r($validator);
         $validator?redirect('/auth/login'):
-              redirect()->back()->withErrors($validator);
-         return redirect()->back()->with('success', ' Registration Successful!');
+            redirect()->back()->withErrors($validator);
+            return redirect()->back()->with('success', 'Question added successful!');
 
     }
     // Create Quiz Func

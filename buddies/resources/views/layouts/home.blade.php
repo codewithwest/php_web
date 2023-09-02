@@ -13,7 +13,12 @@
 <script>
     setTimeout(() => document.querySelector('.alert-success-cont').style.display = "none", 3500)
 </script>
-
+@elseif (Session::has('failure'))
+    <div class="alert-failure-cont top-0 pos-abs d-flex center-content w-100">
+    <div class="alert-failure m-auto fw-bold ">
+        {{ Session::get('failure') }}
+    </div>
+</div>
 @endif
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
@@ -25,6 +30,7 @@
             <img src="{{ asset('images/home0.jpg') }}" class="fill" alt="">
         </div>
         {{--  Info Divs --}}
+        <div class="flex-col">
             <div class="info d-flex wrap">
                 <h4 class="header text-center w-100" style="margin: 30px;">WHY BE A BUDDY?</h4>
                 <div class="d-flex wrap">
@@ -60,6 +66,7 @@
                     </div>
                 </div>
             </div>
+        </div>
             <br>
         <div class="carousel ">
             <div class="imgs d-flex j-sb">

@@ -32,6 +32,7 @@
 <script>
         setTimeout(() => document.querySelectorAll('.alert-success-cont')
             .forEach(element => element.style.display = "none"), 3500)
-
+            setTimeout(() => document.querySelectorAll('.alert-failure-cont')
+            .forEach(element => element.style.display = "none"), 3500)
     </script>
 </html>

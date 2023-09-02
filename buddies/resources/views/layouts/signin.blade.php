@@ -14,15 +14,20 @@
 @else
  <link rel="stylesheet" href="{{ asset('css/quiz.css') }}">
     @if (Session::has('success'))
-        <div class="alert-success-cont top-0 pos-abs d-flex center-content w-100">
-            <div class="alert-success m-auto fw-bold ">
-                {{ Session::get('success') }}
-            </div>
+    <div class="alert-success-cont top-0 pos-abs d-flex center-content w-100">
+        <div class="alert-success m-auto fw-bold ">
+            {{ Session::get('success') }}
         </div>
-        <script>
-            setTimeout(() => document.querySelector('.alert-success-cont').style.display = "none", 3500)
-        </script>
-
+    </div>
+    <script>
+        setTimeout(() => document.querySelector('.alert-success-cont').style.display = "none", 3500)
+    </script>
+    @elseif (Session::has('failure'))
+        <div class="alert-failure-cont top-0 pos-abs d-flex center-content w-100">
+        <div class="alert-failure m-auto fw-bold ">
+            {{ Session::get('failure') }}
+        </div>
+    </div>
     @endif
     <link rel="stylesheet" href="{{ asset('css/joinus.css') }}">
     <div class="join-us cont h-100 flex-col center-content">

@@ -17,15 +17,20 @@ use App\Http\Controllers\AdminHandler;
 |
 */
 
+// User methods
+// Home
 Route::get('/', function () {
     return view('layouts.home');
 });
+// User sign up
 Route::get('/signup', function () {
     return view('layouts.joinus');
 });
+// user sign in
 Route::get('/signin', function () {
     return view('layouts.signin');
 });
+// Use attempt started quiz
 Route::get('/quiz/attempt', function () {
     // Check if quiz is started and is logged in
     if (Session::has('questions') && Session::has('user.email')) {
@@ -36,6 +41,7 @@ Route::get('/quiz/attempt', function () {
     }
 
 });
+// User choose quiz dynamics
 Route::get('/quiz', function () {
     // Check if user is logged in else redirect to login
     if (Session::has('user.email')) {
@@ -51,6 +57,7 @@ Route::get('/quiz', function () {
             return redirect('/signin');
         }
 });
+// User get recent quiz score
 Route::get('/quiz/score', function () {
     // Check if
      if (Session::has('quiz_data.question_num')>3) {
@@ -61,10 +68,6 @@ Route::get('/quiz/score', function () {
         return  redirect('/signin');
      }
 });
-// Route::get('/quizzes/history', function () {
-//     return view('layouts.score',['questions' => $questions]);
-// });
-
 
 // Create New Question
 Route::get('/admin/dashboard/questions/new', function () {
@@ -77,15 +80,14 @@ Route::get('/admin/dashboard/user/new', function () {
 });
 // Route::get('/quiz/type/{id}', function ($userId) {
 
-//     // return view('admin.useredit',['option' => $option]);
-
-// });
+// User crequest new quiz
 Route::get('/new/quiz/', function () {
     session()->forget('questions');
     session()->forget('quiz_data');
     return redirect('/quiz');
 
 });
+// Clear session for logout
 Route::get('/clear/session', function () {
     session()->flush();
     return redirect()->back()->with('success','Logout succesful, Do visit again!');
@@ -94,20 +96,24 @@ Route::get('/clear/session', function () {
 Route::get('/about', function () {
     return view('layouts.about');
 });
-
+// Check out session values
 Route::get('/session', function () {
     return session()->all();
 });
 
 // Get user profile
 Route::get('/profile', function () {
-
     return view('layouts.profile');
 });
-// Add Quiz
+
+// User Post
+// Create new random quiz
 Route::post('/quiz/new', [QuizHandler::class, 'addQuiz']);
+// Quiz attempt answer
 Route::post('/quiz/attempt', [QuizHandler::class, 'markQuiz']);
+//
 Route::post('/quiz/create', [QuizHandler::class, 'createQuiz']);
+// Grade Quiz
 Route::post('/quiz/grade', [QuizHandler::class, 'markQuiz']);
 // User Auth
 Route::post('/signup', [UserHandler::class, 'userRegister']);
@@ -116,14 +122,9 @@ Route::post('/user/update', [UserHandler::class, 'userUpdate']);
 // Get User History
 Route::get('/quizzes/history', [UserHandler::class, 'userHistory']);
 
-// Del quiz
-Route::post('/quiz/del', [UserHandler::class, 'delQuiz']);
-// Delete User
-Route::post('/user/del', [AdminHandler::class, 'adminDelUser']);
+// Admin Methods
 
-
-// Admin Post Handlers
-Route::post('/admin/user/update', [AdminHandler::class, 'adminUserUpdate']);
+// Get
 
 
 // Admin Dash board
@@ -154,22 +155,16 @@ Route::get('/admin/dashboard/quizzes', function () {
     return redirect('/admin/signin');
 });
 
-// Admin Auth
-// Admin sign  up
+// Admin Get Auth Pages
+// Admin sign  up page
 Route::get('/admin/dashboard/new/admin', function () {
     return view('admin.login');
 });
-// Admin sign in
+// Admin sign in page
 Route::get('/admin/signin', function () {
     return view('admin.login');
 });
 
-Route::get('/admin/dashboard/new/product', function () {
-    return view('auth.admin_newproduct');
-});
-Route::get('/admin/dashboard/new/user', function () {
-    return view('auth.ind_signup');
-});
 
 // Get User to edit
 Route::get('/admin/dashboard/users/{id}', function ($userId) {
@@ -181,6 +176,7 @@ Route::get('/admin/dashboard/users/{id}', function ($userId) {
 }
      return redirect('/admin/signin');
 });
+// get question to edit
 Route::get('/admin/dashboard/questions/{id}', function ($userId) {
     // ...
     if (Session::has('user') && str_contains(Session::get('user.email'), '.admin')) {
@@ -191,12 +187,15 @@ Route::get('/admin/dashboard/questions/{id}', function ($userId) {
      return redirect('/admin/signin');
 });
 
-// Get Product to edit
-// Route::get('/admin/dashboard/users/{id}', function ($productBarcode) {
-//     // ...
-//     $product = DB::table('products')->where('barcode',$productBarcode)->get();
-//     // echo $user;
-//     return view('admin.productedit',['productByBarcode' => $product]);
 
-// });
+// Post
+
+// Del quiz From database
+Route::post('/quiz/del', [UserHandler::class, 'delQuiz']);
+// Delete User by Admin
+Route::post('/user/del', [AdminHandler::class, 'adminDelUser']);
+// Del Question by admin
+Route::post('/question/del', [AdminHandler::class, 'adminDelQuestion']);
+// Admin update User Details
+Route::post('/admin/user/update', [AdminHandler::class, 'adminUserUpdate']);
 

@@ -63,7 +63,7 @@
                                     <path
                                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                 </svg>
-                                {{-- <p class="d-none">{{ $data->email }}</p> --}}
+                                <p class="d-none">{{ $data->id }}</p>
                             </a>
                             <a class="edit-user center-content" href="/admin/dashboard/questions/{{ $data->id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor"
@@ -79,5 +79,39 @@
             </tbody>
         </table>
 
-    </div>
+    <script>
+    (() => {
+            let del_quiz_int = document.querySelectorAll('.del-user')
+            del_quiz_int.forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault()
+                    let _id = btn.children[1].textContent.toString().trim()
+                    console.log(_id)
+                    await fetch('/question/del', {
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            "X-Requested-With": "XMLHttpRequest",
+                            // "X-CSRF-Token": formData['_token']
+                        },
+                        method: "POST",
+                        // credentials: "same-origin",
+                        body: JSON.stringify({
+                            id: _id,
+                        })
+                    })
+                    .then(e => console.log(e))
+                    .then(e => {
+                            btn.parentElement.parentElement.style.background = "rgba(220,5,10,.7)"
+                            setTimeout(() => {
+                            btn.parentElement.parentElement.style.display = "none"
+                            }, 1500);
+                        })
+                })
+
+                })
+            })
+        ()
+        </script>
+        </div>
 @endsection

@@ -100,6 +100,12 @@ Quizzes History
             let quiz_id = btn.parentElement.parentElement.children[0].children[0].value
             console.log(quiz_id);
             fetch('/quiz/del', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    "X-Requested-With": "XMLHttpRequest",
+                    // "X-CSRF-Token": formData['_token']
+                },
                 method: "POST",
                 credentials: "same-origin",
                 body: JSON.stringify({
@@ -107,7 +113,10 @@ Quizzes History
                 })
             })
                 .then(e => e.json()).then(e => {
+                    btn.parentElement.parentElement.style.background = "rgba(220,5,10,.7)"
+                    setTimeout(() => {
                     btn.parentElement.parentElement.style.display = "none"
+                    }, 1500);
                 })
         })
     })

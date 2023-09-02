@@ -1,5 +1,7 @@
 .home-cont {
     margin: 10px 0px;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -8,17 +10,21 @@
 
 }
 
+.info {
+    height: 100%;
+}
+
 .info>h2 {
     padding: 30px 0;
 }
 
 .info>div {
     min-height: 300px;
+    height: auto;
 }
 
 .info>div>.img {
     flex: 1 0 250px;
-    /* height: 300px; */
 }
 
 .info>div>.text {
@@ -26,7 +32,6 @@
     flex: 1 0 250px;
     font-size: medium;
     background-color: var(--main-color);
-    /* height: 300px; */
 
 }
 
@@ -98,7 +103,10 @@
 @media screen and (min-width:900px) {
     .home-cont>.banner {
         height: 480px;
+    }
 
+    .info>div>.text {
+        font-size: large;
     }
 
     .info>div {
@@ -115,10 +123,12 @@
 
     .carousel {
         grid-template-rows: 380px 80px;
+        grid-column: 90%;
+        margin: 0 auto;
     }
 
     .carousel>.imgs {
-        height: 380px;
+        height: 400px;
     }
 }
 
@@ -126,6 +136,11 @@
     .carousel {
         grid-template-rows: 220px 80px;
     }
+
+    .info>.img {
+        max-height: 300px;
+    }
+
 
     .carousel>.imgs {
         height: 220px;

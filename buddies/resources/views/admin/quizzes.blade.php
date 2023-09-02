@@ -52,14 +52,24 @@
                     let quiz_id = btn.children[1].textContent
                     console.log(quiz_id);
                     fetch('/quiz/del', {
+                             headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    "X-Requested-With": "XMLHttpRequest",
+                    // "X-CSRF-Token": formData['_token']
+                },
                         method: "POST",
                         credentials: "same-origin",
                         body: JSON.stringify({
                             quiz_id: quiz_id,
                         })
                     })
-                        .then(e => e.json()).then(e => {
+                    .then(e => console.log(e))
+                    .then(e => {
+                            btn.parentElement.parentElement.style.background = "rgba(220,5,10,.7)"
+                            setTimeout(() => {
                             btn.parentElement.parentElement.style.display = "none"
+                            }, 1500);
                         })
                 })
             })

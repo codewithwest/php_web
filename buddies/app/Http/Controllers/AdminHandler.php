@@ -38,13 +38,21 @@ class AdminHandler extends Controller
     function adminDelUser(Request $request){
         // return $request->email;
         $delete = DB::table('users')
-        ->whereEmail($request->email)
+        ->where('email',$request->email)
         ->delete();
-        return $delete?
+            return $delete?
          response()->json(['success'=>'Quiz deleted']):
           response()->json(['failure'=>'Failed to delete user'], 201,);;
     }
-
+    function adminDelQuestion(Request $request){
+        // return $request->email;
+        $delete = DB::table('questions')
+        ->where('id',$request->id)
+        ->delete();
+            return $delete?
+         response()->json(['success'=>'Quiz deleted']):
+          response()->json(['failure'=>'Failed to delete user'], 201,);;
+    }
    //   Logout Auth
 
 }
